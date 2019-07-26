@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-back-button text="atrás"></ion-back-button>
+      </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Documentos NSR
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding color="dark">
+  <ion-list>
+    <ion-item *ngFor="let nsr of nsrs">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="12">
+            <ion-thumbnail>
+              <img [src]="nsr.icon">
+            </ion-thumbnail><br><br>
+            <ion-label>{{nsr.name}}</ion-label>
+            <p style="font-size: 1rem">{{nsr.desc}}</p>
+            <ion-button download="{{nsr.url}}" color="secondary" expand="block">
+              Descargar
+              <ion-icon slot="end" name="cloud-download"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer color="dark">
+  <ion-toolbar text-center>
+    <span style="font-size: .8rem; margin-right: 10px;">
+      Fast Fire - Redes contra incendios. &copy; 2019
+    </span>
+  </ion-toolbar>
+</ion-footer>

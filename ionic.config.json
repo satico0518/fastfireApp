@@ -1,0 +1,7 @@
+{
+  "name": "FastFire2019",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

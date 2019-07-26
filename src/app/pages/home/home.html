@@ -1,0 +1,181 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Inicio
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content id="menu" text-wrap color="primary">
+  <ion-card color="light">
+    <ion-item>
+      <ion-avatar item-start>
+        <img
+          src="https://t4.ftcdn.net/jpg/00/75/11/45/240_F_75114554_jv9GZ6JAGAln8KuBdyzmWIvO1W8EpcbP.jpg"
+        />
+      </ion-avatar>
+      <h2>&nbsp;Fast Fire App</h2><br/><br/>
+    </ion-item>
+    <ion-card-content>
+      <p>
+        Bienvenido <b>{{ email }}</b> a Fast Fire APP, la aplicación para
+        creación y seguimiento de proyectos.
+      </p>
+      <p style="font-size: .7rem; text-align: right; font-weight: 700;">{{ today }}</p>
+    </ion-card-content>
+  </ion-card>
+  <ion-grid style="padding: 5px !important;">
+    <ion-row *ngIf="userProfile === 'oper'">
+      <ion-col col-6>
+        <div class="item-menu inps" (click)="goToCustomers(processInps)">
+          <ion-icon name="qr-scanner"></ion-icon>
+          <br />
+          <span>Inspección</span>
+        </div>
+      </ion-col>
+      <ion-col col-6>
+        <div class="item-menu plans" (click)="goToCustomers(processPlanes)">
+          <ion-icon name="map"></ion-icon>
+          <br />
+          <span>Revisar Planos</span>
+        </div>
+      </ion-col>
+      <ion-col col-6>
+        <div class="item-menu test" (click)="goToCustomers(processSiteTest)">
+          <ion-icon name="flame"></ion-icon>
+          <br />
+          <span>Prueba en Sitio</span>
+        </div>
+      </ion-col>
+      <ion-col col-6>
+        <div
+          class="item-menu daily"
+          (click)="goToCustomers(processDailyReport)"
+        >
+          <ion-icon name="hammer"></ion-icon>
+          <br />
+          <span>Avance Diario</span>
+        </div>
+      </ion-col>
+      <ion-col col-6>
+        <div class="item-menu download">
+          <a href="../../pages/formats/formats.html">
+            <ion-icon name="download"></ion-icon>
+            <br />
+            <span>Formatos</span>
+          </a>
+        </div>
+      </ion-col>
+      <ion-col col-6>
+        <div class="item-menu nsr">
+          <a href="../../pages/nsr/nsr.html">
+            <ion-icon name="md-help-circle"></ion-icon>
+            <br />
+            <span>NSR 10 Docs</span>
+          </a>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="userProfile === 'cust'">
+      <ion-col size="6">
+        <div class="item-menu construc" (click)="checkDailyReports()">
+          <ion-icon name="construct"></ion-icon>
+          <br />
+          <span>Revisar Obra***</span>
+        </div>
+      </ion-col>
+      <ion-col size="6">
+        <div class="item-menu my-plans">
+          <ion-icon name="map"></ion-icon>
+          <br />
+          <span>Administrar Planos</span>
+        </div>
+      </ion-col>
+      <ion-col size="6">
+        <div class="item-menu doc" [routerLink]="'/formatspage'" routerDirection="forward">
+          <ion-icon name="document"></ion-icon>
+          <br />
+          <span>Formato de Entrega</span>
+        </div>
+      </ion-col>
+      <ion-col size="6">
+        <div class="item-menu nsr" [routerLink]="'/nsrpage'" routerDirection="forward">
+          <ion-icon name="md-help-circle"></ion-icon>
+          <br />
+          <span>NSR 10 Docs</span>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="userProfile === 'admin'">
+      <ion-col col-6>
+        <div
+          class="item-menu pending-inspects"
+          (click)="goToCheckInspections()"
+        >
+          <ion-badge color="danger" class="pending-inspects-number">{{
+            pendingInspectsNumber
+          }}</ion-badge>
+          <ion-icon name="md-done-all"></ion-icon>
+          <br />
+          <span>Revisar Inspecciones</span>
+        </div>
+      </ion-col>
+      <ion-col col-6>
+        <div class="item-menu pending-daily" (click)="goToCheckReports()">
+          <ion-badge color="danger" class="pending-inspects-number">{{
+            pendingDailyNumber
+          }}</ion-badge>
+          <ion-icon name="md-construct"></ion-icon>
+          <br />
+          <span>Revisar Avances</span>
+        </div>
+      </ion-col>
+      <ion-col col-6>
+        <div class="item-menu pending-retros" (click)="goToCheckRetros()">
+          <ion-badge color="danger" class="pending-inspects-number">{{
+            pendingRetroNumber
+          }}</ion-badge>
+          <ion-icon name="md-hand"></ion-icon>
+          <br />
+          <span>Retroalimentaciones</span>
+        </div>
+      </ion-col>
+      <ion-col col-6>
+        <div class="item-menu database">
+          <a href="../../pages/database/database.html">
+            <ion-icon name="md-settings"></ion-icon>
+            <br />
+            <span>Base de Datos</span>
+          </a>
+        </div>
+      </ion-col>
+      <ion-col col-6>
+        <div class="item-menu nsr">
+          <a href="../../pages/nsr/nsr.html">
+            <ion-icon name="md-help-circle"></ion-icon>
+            <br />
+            <span>NSR 10 Docs</span>
+          </a>
+        </div>
+      </ion-col>
+      <ion-col col-6>
+        <div class="item-menu reports">
+          <a href="../../pages/reportsPage/reportsPage.html">
+            <ion-icon name="md-stats"></ion-icon>
+            <br />
+            <span>Reportes</span>
+          </a>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer color="dark">
+  <ion-toolbar text-center>
+    <span style="font-size: .8rem; margin-right: 10px;">
+      Fast Fire - Redes contra incendios. &copy; 2019
+    </span>
+  </ion-toolbar>
+</ion-footer>

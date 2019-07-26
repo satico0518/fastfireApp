@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-back-button text="atrás"></ion-back-button>
+      </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Descarga de Formatos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content text-wrap>
+  <ion-list>
+    <ion-item *ngFor="let format of formats">
+      <ion-thumbnail slot="start">
+        <img [src]="format.icon"/>
+      </ion-thumbnail>
+      <ion-label>{{ format.name }}</ion-label>
+      <ion-button fill="outline" (click)="viewFormat(format.url)">
+        Revisar
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer color="dark">
+  <ion-toolbar text-center>
+    <span style="font-size: .8rem; margin-right: 10px;">
+      Fast Fire - Redes contra incendios. &copy; 2019
+    </span>
+  </ion-toolbar>
+</ion-footer>

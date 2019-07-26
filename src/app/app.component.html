@@ -1,0 +1,29 @@
+<ion-app>
+  <ion-split-pane>
+    <ion-menu type="overlay">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Fast Fire App</ion-title>
+          <ion-buttons slot="end">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content color="dark" padding>
+        <ion-button
+          expand="block" 
+          fill="outline"
+          color="success"
+          *ngFor="let p of pages"
+          (click)="openPage(p)">
+          {{ p.title }}
+        </ion-button><br><br>
+        <ion-button expand="block" fill="outline" (click)="onLogOff()" color="danger" menuToggle>
+          Cerrar Sesión
+          <ion-icon ios="ios-log-out" md="md-log-out" slot="end"></ion-icon>
+        </ion-button>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

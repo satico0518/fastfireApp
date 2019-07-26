@@ -1,0 +1,93 @@
+page-home ion-content #menu {
+    background-color: #3a3a3a;
+}
+
+#menu {
+    padding: 0 !important;
+    background-color: red;
+}
+
+#menu ion-icon {
+    font-size: 5rem;
+    color: lightgray;
+}
+
+.item-menu {
+    padding: 20px;
+    text-align: center;
+    border: solid 1px white;
+    height: 150px;
+}
+
+.item-menu span {
+    color: white;
+}
+
+.item-menu.inps {
+    background-color: #f75335;
+}
+
+.item-menu.plans {
+    background-color: #908931;
+}
+
+.item-menu.my-plans {
+    background-color: #5a07f3;
+}
+
+.item-menu.test {
+    background-color: #d8001e;
+}
+
+.item-menu.daily {
+    background-color: #0a8c74;
+}
+
+.item-menu.download {
+    background-color: #304df0;
+}
+
+.item-menu.construc {
+    background-color: #720a8c;
+}
+
+.item-menu.doc {
+    background-color: #5a5a5a;
+}
+
+.item-menu.pending-inspects {
+    background-color: #5a5a5a;
+}
+
+.item-menu.pending-daily {
+    background-color: #112c42;
+}
+
+.item-menu.pending-retros {
+    background-color: #1a1616;
+}
+
+.item-menu.database {
+    background-color: #172271;
+}
+
+.item-menu.nsr {
+    background-color: #720a8c;
+}
+
+.item-menu.reports {
+    background-color: #0a4d8c;
+}
+
+.profilePic {
+    width: 95%;
+    box-shadow: 5px 5px 10px;
+    margin: 2.5%;
+    border-radius: 10px;
+}
+
+.pending-inspects-number {
+    position: absolute;
+    margin: -10px 0 0 45%;
+    border-radius: 50px;
+}
