@@ -22,13 +22,13 @@
     </ion-slides>
     <ion-card-content style="color: whitesmoke">
       <p>
-        <b>Cliente:</b> {{report?.customer}}
+        {{report?.customer}}
         <br>
         <b>Locacion:</b> {{report?.location}}
         <br>
         <b>Operario:</b> {{report?.user}}
         <br>
-        <span text-right style="font-size: .8rem">
+        <span text-right style="font-size: .8rem; color: darkgreen">
           Fecha: {{report?.creationDate?.toDate() | date:'dd MMM yyyy HH:mm'}}
         </span>
       </p>

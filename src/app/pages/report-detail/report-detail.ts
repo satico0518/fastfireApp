@@ -41,8 +41,8 @@ export class ReportDetailPage {
         {
           text: 'Chequear',
           handler: () => {
-            this.us.presentLoading('Chequeando avance...').then(loader => this.loader = loader);
-            this.admnSrvc.checkReport(this.report.creationDate).then(resp => {
+            this.us.presentLoading('Chequeando avance...').then(loader => {
+              this.admnSrvc.checkReport(this.report.creationDate).then(resp => {
               if (resp) {
                 this.us.presentToast('Avance Chequeado exitosamente!').then(toast => {
                   this.toast = toast;
@@ -50,6 +50,10 @@ export class ReportDetailPage {
                 });
                 this.loader.dismiss();
               }
+              }).catch(err => {
+                loader.dismiss();
+                this.us.presentToast(JSON.stringify(err)).then(toast => toast.present());
+              });
             });
           }
         }

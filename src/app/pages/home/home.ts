@@ -87,10 +87,10 @@ export class HomePage {
   }
 
   goToCheckInspections() {
-    // this.router.navigate(CheckInspectionsPage);
+    this.router.navigate(['checkinpectionspage']);
   }
   goToCheckReports() {
-    // this.router.navigate(CheckDailyReportsPage);
+    this.router.navigate(['checkdailyreports']);
   }
 
   goToCheckRetros() {

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ProcessEnum } from '../../enums/process.enum';
 import { UtilsService } from '../../services/utils.service';
 import { ProcessService } from '../../services/process.service';
-import { CustomersPage } from '../customers/customers';
 import { AdminService } from '../../services/admin.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import {
@@ -47,16 +46,13 @@ export class LocationsPage {
             this.nextPage = 'planespage';
             break;
           case ProcessEnum.SiteTest:
-            // this.nextPage = SitetestPage;
+            this.nextPage = 'sitetestpage';
             break;
           case ProcessEnum.DailyReport:
-            // this.nextPage = DailyReportPage;
+            this.nextPage = 'dailyreportpage';
             break;
           case ProcessEnum.DailyReport:
-            // this.nextPage = DailyReportPage;
-            break;
-          case ProcessEnum.DailyReport:
-            this.nextPage = CustomersPage;
+            this.nextPage = 'customerspage';
             break;
           case ProcessEnum.CheckHistInspLoc:
           case ProcessEnum.CheckHistInspOper:

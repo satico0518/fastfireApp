@@ -15,7 +15,7 @@
   <ion-card style="color: whitesmoke;">
     <img style="width: 100%;" [src]="customer.icon"/>
     <ion-card-header style="color: whitesmoke;" text-wrap>
-      <ion-label>{{customer.name}} ({{customer.brand}})</ion-label>
+      <ion-label>{{customer?.name}} ({{customer?.brand}})</ion-label>
       <br><ion-label style="color: darkgray" text-wrap>Locacion: {{location?.data.name}}</ion-label>
     </ion-card-header>
   </ion-card>

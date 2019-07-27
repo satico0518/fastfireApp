@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-back-button text="atrás"></ion-back-button>
+      </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Prueba en sitio
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding color="dark" text-wrap>
+  <ion-card style="color: whitesmoke;">
+    <img style="width: 100%;" [src]="customer?.icon" />
+    <ion-card-header style="color: whitesmoke;" text-wrap>
+      <ion-label>{{customer?.name}} ({{customer?.brand}})</ion-label>
+      <br><ion-label style="color: darkgray" text-wrap>Locacion: {{location?.data.name}}</ion-label>
+    </ion-card-header>
+  </ion-card>
+  <ion-list color="light">
+    <ion-card>
+      <ion-card-header text-center>
+        <ion-badge color="secondary">Fotografía Formato</ion-badge>
+      </ion-card-header>
+      <ion-slides pager>
+        <ion-slide *ngFor="let photo of testFormPics, let i = index">
+          <img [src]="photo">
+          <ion-icon *ngIf="!photo.includes('no-disponible')" name="trash" class="del-photo" (click)="removePhoto(i)"></ion-icon>
+        </ion-slide>
+      </ion-slides>
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="floating">Observaciones de la prueba</ion-label>
+          <ion-textarea [(ngModel)]="memo"></ion-textarea>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+  <ion-row>
+    <ion-col>
+      <ion-button expand="block" fill="outline" color="secondary" (click)="takePhoto()">
+        <ion-icon name="ios-paper-outline"></ion-icon>
+        Capturar Formato/Manometro
+      </ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button expand="block" fill="outline" color="success" (click)="sendTest()">
+        Enviar Prueba
+        <ion-icon name="send"></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>
+
+<ion-footer color="dark">
+  <ion-toolbar text-center>
+    <span style="font-size: .8rem; margin-right: 10px;">
+      Fast Fire - Redes contra incendios. &copy; 2019
+    </span>
+  </ion-toolbar>
+</ion-footer>

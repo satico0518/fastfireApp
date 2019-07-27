@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-back-button text="atrás"></ion-back-button>
+      </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Revisar Inspecciones
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding color="dark" text-wrap>
+  <ion-list-header style="color: whitesmoke" text-center>
+    Inspecciones Pendientes
+  </ion-list-header>
+  <ion-list>
+    <ion-item (click)="goToDetail(insp)" *ngFor="let insp of inspections">
+      <ion-label text-wrap>
+        {{insp.customer}}<br>
+        <span style="font-size: .9rem; color: darkgray">Locación: {{insp.location}}</span><br>
+        <span style="font-size: .8rem; color: darkgreen">Fecha: {{insp.creationDate.toDate() | date:'dd MMM yyyy HH:mm'}}</span>
+    </ion-label>
+    <ion-icon name="ios-arrow-forward" slot="end"></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer color="dark">
+  <ion-toolbar text-center>
+    <span style="font-size: .8rem; margin-right: 10px;">
+      Fast Fire - Redes contra incendios. &copy; 2019
+    </span>
+  </ion-toolbar>
+</ion-footer>

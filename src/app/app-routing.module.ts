@@ -40,12 +40,36 @@ const routes: Routes = [
     loadChildren: '../app/pages/order/order.module#OrderPageModule'
   },
   {
+    path: 'databasepage',
+    loadChildren: '../app/pages/databasepage/database.module#DatabasePageModule'
+  },
+  {
+    path: 'sitetestpage',
+    loadChildren: '../app/pages/sitetest/sitetest.module#SitetestPageModule'
+  },
+  {
     path: 'reportdetailpage',
     loadChildren: '../app/pages/report-detail/report-detail.module#ReportDetailPageModule'
   },
   {
+    path: 'dailyreportpage',
+    loadChildren: '../app/pages/daily-report/daily-report.module#DailyReportPageModule'
+  },
+  {
     path: 'checklocationreportspage',
     loadChildren: '../app/pages/check-location-reports/check-location-reports.module#CheckLocationReportsPageModule'
+  },
+  {
+    path: 'checkinpectionspage',
+    loadChildren: '../app/pages/check-inspections/check-inspections.module#CheckInspectionsPageModule'
+  },
+  {
+    path: 'checkdailyreports',
+    loadChildren: '../app/pages/check-daily-reports/check-daily-reports.module#CheckDailyReportsPageModule'
+  },
+  {
+    path: 'orderdetailpage',
+    loadChildren: '../app/pages/order-detail/order-detail.module#OrderDetailPageModule'
   },
   {
     path: 'planespage',

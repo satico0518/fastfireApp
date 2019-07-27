@@ -67,12 +67,10 @@
         </div>
       </ion-col>
       <ion-col size="6">
-        <div class="item-menu nsr">
-          <a href="../../pages/nsr/nsr.html">
-            <ion-icon name="md-help-circle"></ion-icon>
-            <br />
-            <span>NSR 10 Docs</span>
-          </a>
+        <div class="item-menu nsr" [routerLink]="'/nsrpage'" routerDirection="forward">
+          <ion-icon name="md-help-circle"></ion-icon>
+          <br />
+          <span>NSR 10 Docs</span>
         </div>
       </ion-col>
     </ion-row>
@@ -108,13 +106,9 @@
     </ion-row>
     <ion-row *ngIf="userProfile === 'admin'">
       <ion-col size="6">
-        <div
-          class="item-menu pending-inspects"
-          (click)="goToCheckInspections()"
-        >
-          <ion-badge color="danger" class="pending-inspects-number">{{
-            pendingInspectsNumber
-          }}</ion-badge>
+        <div class="item-menu pending-inspects"
+          (click)="goToCheckInspections()">
+          <ion-badge color="danger" class="pending-inspects-number">{{ pendingInspectsNumber }}</ion-badge>
           <ion-icon name="md-done-all"></ion-icon>
           <br />
           <span>Revisar Inspecciones</span>
@@ -122,9 +116,7 @@
       </ion-col>
       <ion-col size="6">
         <div class="item-menu pending-daily" (click)="goToCheckReports()">
-          <ion-badge color="danger" class="pending-inspects-number">{{
-            pendingDailyNumber
-          }}</ion-badge>
+          <ion-badge color="danger" class="pending-inspects-number">{{ pendingDailyNumber }}</ion-badge>
           <ion-icon name="md-construct"></ion-icon>
           <br />
           <span>Revisar Avances</span>
@@ -132,39 +124,31 @@
       </ion-col>
       <ion-col size="6">
         <div class="item-menu pending-retros" (click)="goToCheckRetros()">
-          <ion-badge color="danger" class="pending-inspects-number">{{
-            pendingRetroNumber
-          }}</ion-badge>
+          <ion-badge color="danger" class="pending-inspects-number">{{ pendingRetroNumber }}</ion-badge>
           <ion-icon name="md-hand"></ion-icon>
           <br />
           <span>Retroalimentaciones</span>
         </div>
       </ion-col>
       <ion-col size="6">
-        <div class="item-menu database">
-          <a href="../../pages/database/database.html">
-            <ion-icon name="md-settings"></ion-icon>
-            <br />
-            <span>Base de Datos</span>
-          </a>
+        <div class="item-menu database" [routerLink]="'/databasepage'" routerDirection="forward">
+          <ion-icon name="md-settings"></ion-icon>
+          <br />
+          <span>Base de Datos</span>
         </div>
       </ion-col>
       <ion-col size="6">
-        <div class="item-menu nsr">
-          <a href="../../pages/nsr/nsr.html">
-            <ion-icon name="md-help-circle"></ion-icon>
-            <br />
-            <span>NSR 10 Docs</span>
-          </a>
+        <div class="item-menu nsr" [routerLink]="'/nsrpage'" routerDirection="forward">
+          <ion-icon name="md-help-circle"></ion-icon>
+          <br />
+          <span>NSR 10 Docs</span>
         </div>
       </ion-col>
       <ion-col size="6">
         <div class="item-menu reports">
-          <a href="../../pages/reportsPage/reportsPage.html">
-            <ion-icon name="md-stats"></ion-icon>
-            <br />
-            <span>Reportes</span>
-          </a>
+          <ion-icon name="md-stats"></ion-icon>
+          <br />
+          <span>Reportes</span>
         </div>
       </ion-col>
     </ion-row>
