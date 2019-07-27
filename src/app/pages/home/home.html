@@ -28,28 +28,28 @@
   </ion-card>
   <ion-grid style="padding: 5px !important;">
     <ion-row *ngIf="userProfile === 'oper'">
-      <ion-col col-6>
+      <ion-col size="6">
         <div class="item-menu inps" (click)="goToCustomers(processInps)">
           <ion-icon name="qr-scanner"></ion-icon>
           <br />
           <span>Inspección</span>
         </div>
       </ion-col>
-      <ion-col col-6>
+      <ion-col size="6">
         <div class="item-menu plans" (click)="goToCustomers(processPlanes)">
           <ion-icon name="map"></ion-icon>
           <br />
           <span>Revisar Planos</span>
         </div>
       </ion-col>
-      <ion-col col-6>
+      <ion-col size="6">
         <div class="item-menu test" (click)="goToCustomers(processSiteTest)">
           <ion-icon name="flame"></ion-icon>
           <br />
           <span>Prueba en Sitio</span>
         </div>
       </ion-col>
-      <ion-col col-6>
+      <ion-col size="6">
         <div
           class="item-menu daily"
           (click)="goToCustomers(processDailyReport)"
@@ -59,16 +59,14 @@
           <span>Avance Diario</span>
         </div>
       </ion-col>
-      <ion-col col-6>
-        <div class="item-menu download">
-          <a href="../../pages/formats/formats.html">
+      <ion-col size="6">
+        <div class="item-menu download" [routerLink]="'/formatspage'" routerDirection="forward">
             <ion-icon name="download"></ion-icon>
             <br />
             <span>Formatos</span>
-          </a>
         </div>
       </ion-col>
-      <ion-col col-6>
+      <ion-col size="6">
         <div class="item-menu nsr">
           <a href="../../pages/nsr/nsr.html">
             <ion-icon name="md-help-circle"></ion-icon>
@@ -83,7 +81,7 @@
         <div class="item-menu construc" (click)="checkDailyReports()">
           <ion-icon name="construct"></ion-icon>
           <br />
-          <span>Revisar Obra***</span>
+          <span>Revisar Obra</span>
         </div>
       </ion-col>
       <ion-col size="6">
@@ -94,7 +92,7 @@
         </div>
       </ion-col>
       <ion-col size="6">
-        <div class="item-menu doc" [routerLink]="'/formatspage'" routerDirection="forward">
+        <div class="item-menu doc">
           <ion-icon name="document"></ion-icon>
           <br />
           <span>Formato de Entrega</span>
@@ -109,7 +107,7 @@
       </ion-col>
     </ion-row>
     <ion-row *ngIf="userProfile === 'admin'">
-      <ion-col col-6>
+      <ion-col size="6">
         <div
           class="item-menu pending-inspects"
           (click)="goToCheckInspections()"
@@ -122,7 +120,7 @@
           <span>Revisar Inspecciones</span>
         </div>
       </ion-col>
-      <ion-col col-6>
+      <ion-col size="6">
         <div class="item-menu pending-daily" (click)="goToCheckReports()">
           <ion-badge color="danger" class="pending-inspects-number">{{
             pendingDailyNumber
@@ -132,7 +130,7 @@
           <span>Revisar Avances</span>
         </div>
       </ion-col>
-      <ion-col col-6>
+      <ion-col size="6">
         <div class="item-menu pending-retros" (click)="goToCheckRetros()">
           <ion-badge color="danger" class="pending-inspects-number">{{
             pendingRetroNumber
@@ -142,7 +140,7 @@
           <span>Retroalimentaciones</span>
         </div>
       </ion-col>
-      <ion-col col-6>
+      <ion-col size="6">
         <div class="item-menu database">
           <a href="../../pages/database/database.html">
             <ion-icon name="md-settings"></ion-icon>
@@ -151,7 +149,7 @@
           </a>
         </div>
       </ion-col>
-      <ion-col col-6>
+      <ion-col size="6">
         <div class="item-menu nsr">
           <a href="../../pages/nsr/nsr.html">
             <ion-icon name="md-help-circle"></ion-icon>
@@ -160,7 +158,7 @@
           </a>
         </div>
       </ion-col>
-      <ion-col col-6>
+      <ion-col size="6">
         <div class="item-menu reports">
           <a href="../../pages/reportsPage/reportsPage.html">
             <ion-icon name="md-stats"></ion-icon>

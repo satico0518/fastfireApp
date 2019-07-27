@@ -501,7 +501,7 @@ export class AdminService {
   getLocationReports(locId: string): Observable<any> {
     return this.afs
       .collection('dailyreport', ref =>
-        ref.where('locationId', '==', locId).orderBy('creationDate', 'desc')
+        ref.where('locationId', '==', locId).where('state', '==', 'created').orderBy('creationDate', 'desc')
       )
       .valueChanges();
   }

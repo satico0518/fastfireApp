@@ -18,6 +18,13 @@ import { AuthService } from './services/auth.service';
 import { AdminService } from './services/admin.service';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { FormatsService } from './services/formats.service';
+import { UtilsService } from './services/utils.service';
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
+import { PlaneService } from './services/plane.service';
+import { ProcessService } from './services/process.service';
+import { Camera } from '@ionic-native/camera/ngx';
+import { MaterialsPageModule } from './pages/materials/materials.module';
+import { ReviewOrderPageModule } from './pages/review-order/review-order.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,6 +33,8 @@ import { FormatsService } from './services/formats.service';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    MaterialsPageModule,
+    ReviewOrderPageModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFireStorageModule,
@@ -39,6 +48,11 @@ import { FormatsService } from './services/formats.service';
     AuthService,
     AdminService,
     FormatsService,
+    UtilsService,
+    PhotoViewer,
+    PlaneService,
+    ProcessService,
+    Camera,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

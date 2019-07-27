@@ -33,6 +33,7 @@ export class LoginPage {
         if (resp) {
           this.authSrvc.setCurrentUser(this.user).then((success) => {
             if (success) {
+              debugger
               this.authSrvc.userChange.next(this.user);
               this.router.navigate(['homepage']);
               this.errorMsg = '';

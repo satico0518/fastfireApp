@@ -1,0 +1,48 @@
+<ion-header color="danger">  
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button text="atrás"></ion-back-button>
+        </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+          Planos
+      </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content padding color="dark" text-wrap>
+  <ion-card style="color: whitesmoke;">
+    <img style="width: 100%;" [src]="customer.icon"/>
+    <ion-card-header style="color: whitesmoke;" text-wrap>
+      <ion-label>{{customer.name}} ({{customer.brand}})</ion-label>
+      <br><ion-label style="color: darkgray" text-wrap>Locacion: {{location?.data.name}}</ion-label>
+    </ion-card-header>
+  </ion-card>
+  <ion-list color="light">
+    <ion-card *ngFor="let pln of planes">
+      <img *ngIf="pln.data.url && pln.data.url.includes('firebasestorage')" src="./assets/imgs/planoImg.jpg" />
+      <img *ngIf="pln.data.url && pln.data.url.includes('data:image')" [src]="pln.data.url" />
+      <ion-card-header>
+        <ion-label><strong>{{pln.data.name}}.pdf</strong></ion-label>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-label style="font-size: .9rem">Plano cargado por:
+          <i>{{pln.data.uploadUser}}</i>
+        </ion-label>
+        <br><ion-label style="color: darkgreen; font-size: .8rem;">Fecha de cargue:{{pln.data.uploadDate.toDate() | date:'dd MMM yyyy HH:mm'}}</ion-label>
+        <br><br><ion-button size="small" expand="block" *ngIf="pln.data.url && pln.data.url.includes('firebasestorage')" fill="outline" 
+          (click)="viewPlane(pln.data.url)">Revisar Plano
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+  <ion-badge *ngIf="planes?.length === 0" color="danger">Locación sin planos!</ion-badge>
+</ion-content>
+<ion-footer color="dark">
+  <ion-toolbar text-center>
+    <span style="font-size: .8rem; margin-right: 10px;">
+      Fast Fire - Redes contra incendios. &copy; 2019
+    </span>
+  </ion-toolbar>
+</ion-footer>

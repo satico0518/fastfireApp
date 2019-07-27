@@ -1,0 +1,43 @@
+<ion-header color="danger">
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button text="atrás"></ion-back-button>
+        </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+          Inspección
+      </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding color="dark" text-wrap>
+  <ion-list>
+    <ion-list-header>
+      Pedido
+    </ion-list-header>
+    <ion-item-sliding *ngFor="let order of orderList, let i = index">
+      <ion-item>
+        <ion-label>
+          <h4>{{order.name}}</h4>
+          <p style="color: darkgrey">Cantidad: {{order.qty}} - Pulgadas: {{order.inches}}"</p>
+        </ion-label>        
+      </ion-item>
+      <ion-item-options slot="end">
+        <ion-item-option color="primary" (click)="remove(i)">
+          <ion-icon name="trash" slot="start"></ion-icon>
+          Eliminar
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
+<ion-footer color="dark">
+  <ion-button expand="block" color="danger" (click)="closeModal()">Cerrar</ion-button>
+  <ion-toolbar text-center>
+    <span style="font-size: .8rem; margin-right: 10px;">
+      Fast Fire - Redes contra incendios. &copy; 2019
+    </span>
+  </ion-toolbar>
+</ion-footer>

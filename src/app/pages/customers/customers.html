@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="atrás"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      {{ title }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding color="dark" text-wrap>
+  <ion-list-header text-center style="color: whitesmoke">
+    Seleccione Cliente
+  </ion-list-header>
+  <ion-list>
+    <ion-searchbar></ion-searchbar>
+    <!-- <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar> -->
+    <ion-item *ngFor="let cust of customers" (click)="goToLocations(cust)">
+      <ion-avatar slot="start">
+        <img [src]="cust.data.icon" />
+      </ion-avatar>
+      <ion-label text-wrap>
+        <ion-icon name="ios-arrow-forward" slot="end" style="float: right;"></ion-icon>
+        <h4>{{ cust.data.name }}</h4>
+        <p>{{ cust.data.address }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer color="dark">
+  <ion-toolbar text-center>
+    <span style="font-size: .8rem; margin-right: 10px;">
+      Fast Fire - Redes contra incendios. &copy; 2019
+    </span>
+  </ion-toolbar>
+</ion-footer>

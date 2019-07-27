@@ -1,0 +1,64 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button text="atrás"></ion-back-button>
+        </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+          Detalle de Avance
+      </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark" text-wrap>
+  <ion-card>
+    <ion-slides pager>
+      <ion-slide *ngFor="let img of report?.photos, let i = index">
+        <img [src]="img">
+        <span class="resizer"><ion-icon name="md-expand" (click)="goToViewer(img)"></ion-icon></span>
+      </ion-slide>
+    </ion-slides>
+    <ion-card-content style="color: whitesmoke">
+      <p>
+        <b>Cliente:</b> {{report?.customer}}
+        <br>
+        <b>Locacion:</b> {{report?.location}}
+        <br>
+        <b>Operario:</b> {{report?.user}}
+        <br>
+        <span text-right style="font-size: .8rem">
+          Fecha: {{report?.creationDate?.toDate() | date:'dd MMM yyyy HH:mm'}}
+        </span>
+      </p>
+    </ion-card-content>
+    <ion-grid>
+
+    </ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-textarea style="font-size: .8rem; color: black;" rows="2"
+          [(ngModel)]="report.memo" [disabled]="true" placeholder="sin observaciones">
+        </ion-textarea>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button expand="block" color="success" fill="outline" (click)="checkReport()">
+          Chequear Avance
+          <ion-icon name="send" slot="end"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-content>
+<ion-footer color="dark">
+  <ion-toolbar text-center>
+    <span style="font-size: .8rem; margin-right: 10px;">
+      Fast Fire - Redes contra incendios. &copy; 2019
+    </span>
+  </ion-toolbar>
+</ion-footer>

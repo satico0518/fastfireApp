@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AdminService } from 'src/app/services/admin.service';
@@ -83,7 +83,7 @@ export class HomePage {
   }
 
   goToCustomers(process: string) {
-    // this.router.navigate(CustomersPage, { process });
+    this.router.navigate(['customerspage'], { state: { process }});
   }
 
   goToCheckInspections() {
@@ -98,12 +98,15 @@ export class HomePage {
   }
 
   checkDailyReports() {
-    // this.authServ.getCurrentUser().then(user =>
-    //   this.router.navigate(UserAssignedLocationsPage, {
-    //     user,
-    //     process: ProcessEnum.CustomerCheck
-    //   })
-    // );
+    this.authServ.getCurrentUser().then(user => {
+      const navigationExtras: NavigationExtras = {
+        state: {
+          user,
+          process: ProcessEnum.CustomerCheck
+        }
+      };
+      this.router.navigate(['userassignedlocationspage'], navigationExtras);
+    });
   }
 
   ionViewDidEnter() {

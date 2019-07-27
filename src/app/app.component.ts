@@ -41,7 +41,7 @@ export class AppComponent {
 
   onLogOff() {
     this.profile = null;
-    this.afAuth.auth.signOut().then((resp) => { debugger
+    this.afAuth.auth.signOut().then((resp) => {
       window.localStorage.clear();
       this.router.navigateByUrl('/loginpage');
     },

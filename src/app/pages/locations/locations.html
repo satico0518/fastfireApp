@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button text="atrás"></ion-back-button>
+        </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        {{title}}
+      </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="list-avatar-page" color="dark">
+  <ion-list-header text-center style="color: whitesmoke">
+    Seleccione Locación
+  </ion-list-header>
+  <ion-list>
+    <ion-item (click)="goToNextPage(loc)" *ngFor="let loc of locations">
+      <ion-label>
+        <ion-icon name="ios-arrow-forward" slot="end" style="float: right"></ion-icon>
+        <h4>{{loc.data.name}}</h4>
+        <p style="color: darkgray">{{loc.data.address}}</p>
+      </ion-label>      
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer color="dark">
+  <ion-toolbar text-center>
+    <span style="font-size: .8rem; margin-right: 10px;">
+      Fast Fire - Redes contra incendios. &copy; 2019
+    </span>
+  </ion-toolbar>
+</ion-footer>
