@@ -24,7 +24,7 @@ export class DailyReportPage {
     private procSrvc: ProcessService,
     private camera: Camera,
     public alertCtrl: AlertController,
-    private us: UtilsService,
+    public us: UtilsService,
     private authSrvc: AuthService,
     private router: Router
   ) {

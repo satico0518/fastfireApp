@@ -19,7 +19,7 @@ export class OrderDetailPage {
     public modalCtrl: ModalController,
     public alertCtrl: AlertController,
     private admnSrvc: AdminService,
-    private util: UtilsService
+    public util: UtilsService
   ) {
     this.actRoute.queryParams.subscribe(() => {
       if (this.router.getCurrentNavigation().extras.state) {

@@ -19,7 +19,7 @@ export class MaterialCrudPage implements ICrud {
     private admSrvc: AdminService,
     public modalCtrl: ModalController,
     private alert: AlertController,
-    private us: UtilsService) {
+    public us: UtilsService) {
     this.getObj();
   }
 

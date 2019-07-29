@@ -30,7 +30,7 @@ export class OrderPage {
     private camera: Camera,
     public alertCtrl: AlertController,
     private authSrvc: AuthService,
-    private us: UtilsService
+    public us: UtilsService
   ) {
     this.actRoute.queryParams.subscribe(() => {
       if (this.router.getCurrentNavigation().extras.state) {

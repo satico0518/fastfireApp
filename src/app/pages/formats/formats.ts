@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormatsService } from 'src/app/services/formats.service';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { UtilsService } from 'src/app/services/utils.service';
 
 
 @Component({
@@ -13,7 +14,8 @@ export class FormatsPage {
 
   constructor(
     private frmSrvc: FormatsService,
-    private iab: InAppBrowser) {
+    private iab: InAppBrowser,
+    public us: UtilsService) {
     this.frmSrvc.getFormats().then(resp => {
       this.formats = resp;
     });
@@ -23,5 +25,4 @@ export class FormatsPage {
     const urlEncode = encodeURIComponent(url);
     this.iab.create('https://docs.google.com/viewer?url=' + urlEncode);
   }
-
 }

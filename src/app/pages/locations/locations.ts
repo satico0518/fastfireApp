@@ -26,11 +26,11 @@ export class LocationsPage {
     public router: Router,
     private procSrvc: ProcessService,
     public loadingCtrl: LoadingController,
-    private us: UtilsService,
+    public us: UtilsService,
     private admSrvc: AdminService,
     private alertCtrl: AlertController,
     private toastCtrl: ToastController,
-    private actRoute: ActivatedRoute
+    private actRoute: ActivatedRoute,
   ) {
     this.actRoute.queryParams.subscribe(() => {
       if (this.router.getCurrentNavigation().extras.state) {

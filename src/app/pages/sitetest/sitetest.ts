@@ -20,7 +20,7 @@ export class SitetestPage {
   constructor(
     public router: Router, public actRoute: ActivatedRoute, private procSrvc: ProcessService,
     private camera: Camera, public alertCtrl: AlertController, private authSrvc: AuthService,
-    private us: UtilsService) {
+    public us: UtilsService) {
       this.actRoute.queryParams.subscribe(() => {
         if (this.router.getCurrentNavigation().extras.state) {
           this.customer = this.procSrvc.currentCust;

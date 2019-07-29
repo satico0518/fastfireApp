@@ -17,7 +17,7 @@ export class CheckLocationReportsPage {
 
   constructor(
     private actRoute: ActivatedRoute, public router: Router,
-    private admSrvc: AdminService, private us: UtilsService) {
+    private admSrvc: AdminService, public us: UtilsService) {
     this.actRoute.queryParams.subscribe(() => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.currentLoc = this.router.getCurrentNavigation().extras.state.loc;

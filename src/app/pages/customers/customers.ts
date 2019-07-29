@@ -19,7 +19,7 @@ export class CustomersPage {
 
   constructor(
     public actRoute: ActivatedRoute, public router: Router, private procSrvc: ProcessService,
-    public loadingCtrl: LoadingController, private us: UtilsService,
+    public loadingCtrl: LoadingController, public us: UtilsService,
     private as: AuthService) {
       this.actRoute.queryParams.subscribe(() => {
         if (router.getCurrentNavigation().extras.state) {

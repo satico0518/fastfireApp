@@ -16,7 +16,7 @@ export class EditMaterialPage {
   price: number;
   constructor(
     public modal: ModalController, private camera: Camera, public alertCtrl: AlertController,
-    private admSrvc: AdminService, private us: UtilsService,
+    private admSrvc: AdminService, public us: UtilsService,
     private navParams: NavParams
     ) {
       const tempMat = this.navParams.get('obj');

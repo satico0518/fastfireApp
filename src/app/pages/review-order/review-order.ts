@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
+import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
   selector: 'page-review-order',
@@ -9,7 +10,10 @@ export class ReviewOrderPage {
 
   orderList: any[];
 
-  constructor(public navParams: NavParams, public modal: ModalController) {
+  constructor(
+    public navParams: NavParams,
+    public modal: ModalController,
+    public us: UtilsService) {
         this.orderList = this.navParams.get('order');
         console.log('constructor', this.orderList);
   }

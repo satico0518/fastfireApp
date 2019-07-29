@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SettingsPagesEnum } from 'src/app/enums/settings-pages.enum';
 import { Router } from '@angular/router';
+import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
   selector: 'page-database',
@@ -25,7 +26,9 @@ export class DatabasePage {
     description: 'Crear, editar o inactivar clientes'
   }];
 
-  constructor(public router: Router) {
+  constructor(
+    public router: Router,
+    public us: UtilsService) {
   }
 
   ionViewDidLoad() {

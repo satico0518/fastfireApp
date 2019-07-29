@@ -22,7 +22,7 @@ export class UserCrudPage implements ICrud {
     private admSrvc: AdminService,
     public modalCtrl: ModalController,
     private alert: AlertController,
-    private us: UtilsService
+    public us: UtilsService
   ) {}
 
   getObj(): Promise<void> {
@@ -58,15 +58,15 @@ export class UserCrudPage implements ICrud {
   }
 
   newObj(): void {
-    this.modalCtrl
-      .create({ component: NewUserPage })
-      .then(modal => modal.present());
+    // this.modalCtrl
+    //   .create({ component: NewUserPage })
+    //   .then(modal => modal.present());
   }
 
   edit(obj: any) {
-    this.modalCtrl
-      .create({ component: EditUserPage, componentProps: { obj } })
-      .then(modal => modal.present());
+    // this.modalCtrl
+    //   .create({ component: EditUserPage, componentProps: { obj } })
+    //   .then(modal => modal.present());
   }
 
   remove(user: UserModel) {

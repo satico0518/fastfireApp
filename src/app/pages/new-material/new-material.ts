@@ -15,7 +15,7 @@ export class NewMaterialPage {
   price = 0;
   constructor(
     private modalCtrl: ModalController, private camera: Camera, public alertCtrl: AlertController,
-    private admSrvc: AdminService, private us: UtilsService) {
+    private admSrvc: AdminService, public us: UtilsService) {
   }
 
   add() {

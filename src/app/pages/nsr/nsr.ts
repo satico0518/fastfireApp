@@ -11,7 +11,7 @@ export class NsrPage {
 
   constructor(
     private frmSrvc: FormatsService,
-    private us: UtilsService) {
+    public us: UtilsService) {
     this.frmSrvc.getNsrs().then(resp => {
       this.nsrs = resp;
     });

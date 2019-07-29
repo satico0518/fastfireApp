@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ProcessService } from '../../services/process.service';
 import { AlertController, ModalController, NavParams } from '@ionic/angular';
+import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
   selector: 'page-materials',
@@ -14,7 +15,8 @@ export class MaterialsPage {
     private navParams: NavParams,
     private procSrvc: ProcessService,
     private alertCtrl: AlertController,
-    public modal: ModalController
+    public modal: ModalController,
+    public us: UtilsService
   ) {
     this.requestedMaterials = this.navParams.get('requestedMaterials');
   }
@@ -72,6 +74,5 @@ export class MaterialsPage {
         }
       ]
     }).then(prompt => prompt.present());
-    console.log('requestedMaterials', this.requestedMaterials);
   }
 }

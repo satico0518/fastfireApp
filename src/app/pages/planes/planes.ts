@@ -3,6 +3,7 @@ import { PlaneService } from '../../services/plane.service';
 import { ProcessService } from '../../services/process.service';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { Router, ActivatedRoute } from '@angular/router';
+import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
   selector: 'page-planes',
@@ -18,7 +19,8 @@ export class PlanesPage {
     private router: Router,
     private planeSrvc: PlaneService,
     private iab: InAppBrowser,
-    private actRoute: ActivatedRoute
+    private actRoute: ActivatedRoute,
+    public us: UtilsService
   ) {
     this.customer = this.procSrvc.currentCust;
     this.actRoute.queryParams.subscribe(() => {

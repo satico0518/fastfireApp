@@ -18,7 +18,7 @@ export class ReportDetailPage {
     private actRoute: ActivatedRoute, private navCtrl: NavController,
     public router: Router, public alertCtrl: AlertController,
     public modalCtrl: ModalController, private admnSrvc: AdminService,
-    private us: UtilsService) {
+    public us: UtilsService) {
       this.actRoute.queryParams.subscribe(() => {
         if (this.router.getCurrentNavigation().extras.state) {
           this.report = this.router.getCurrentNavigation().extras.state.report;
