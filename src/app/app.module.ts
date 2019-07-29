@@ -27,6 +27,7 @@ import { MaterialsPageModule } from './pages/materials/materials.module';
 import { ReviewOrderPageModule } from './pages/review-order/review-order.module';
 import { NewMaterialPageModule } from './pages/new-material/new-material.module';
 import { EditMaterialPageModule } from './pages/edit-material/edit-material.module';
+import { Downloader } from '@ionic-native/downloader/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -49,6 +50,7 @@ import { EditMaterialPageModule } from './pages/edit-material/edit-material.modu
     SplashScreen,
     LocalNotifications,
     InAppBrowser,
+    Downloader,
     AuthService,
     AdminService,
     FormatsService,

@@ -22,7 +22,7 @@
             </ion-thumbnail><br><br>
             <ion-label>{{nsr.name}}</ion-label>
             <p style="font-size: 1rem">{{nsr.desc}}</p>
-            <ion-button download="{{nsr.url}}" color="secondary" expand="block">
+            <ion-button (click)="downloadFile(nsr.url, nsr.name)" color="secondary" expand="block">
               Descargar
               <ion-icon slot="end" name="cloud-download"></ion-icon>
             </ion-button>

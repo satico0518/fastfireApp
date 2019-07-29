@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform } from '@ionic/angular';
+import { Platform, MenuController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
@@ -20,7 +20,8 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private router: Router,
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
+    private menuCtrl: MenuController
   ) {
     this.initializeApp();
     this.pages = [
@@ -36,6 +37,7 @@ export class AppComponent {
   }
 
   openPage(page) {
+    this.menuCtrl.toggle();
     this.router.navigate([page.route]);
   }
 
@@ -44,6 +46,7 @@ export class AppComponent {
     this.afAuth.auth.signOut().then((resp) => {
       window.localStorage.clear();
       this.router.navigateByUrl('/loginpage');
+      this.menuCtrl.toggle();
     },
       err => console.log(err)
     );

@@ -650,7 +650,7 @@ export class AdminService {
   editMaterial(mat): Promise<boolean> {
     return new Promise((resolve, reject) => {
       try {
-        this.afs.collection('materials', ref => ref.where('name', '==', mat.name))
+        this.afs.collection('materials', ref => ref.where('name', '==', mat.initialName))
           .get()
           .subscribe(snap => {
             console.log('id', snap.docs[0].id);
@@ -658,11 +658,10 @@ export class AdminService {
               .collection('materials')
               .doc(snap.docs[0].id)
               .update(mat)
-              .then(resp => {
-                console.log('edited resp', resp);
+              .then(() => {
                 resolve(true);
               })
-              .catch(err => resolve(false));
+              .catch(() => resolve(false));
           });
       } catch (error) {
         resolve(false);
@@ -708,14 +707,15 @@ export class AdminService {
       } else {
         this.errorMsg = message;
       }
-      const toast = this.toastCtrl.create({
+      this.toastCtrl.create({
         message: this.errorMsg,
         duration: 5000,
         position: 'bottom'
-      }).then(toas => toast.present);
-
-      toast.onDidDismiss(() => {
-        resolve();
+      }).then(toast => {
+        toast.present();
+        toast.onDidDismiss().then(() => {
+          resolve();
+        });
       });
     });
   }

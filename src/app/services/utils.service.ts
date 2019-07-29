@@ -4,6 +4,11 @@ import {
   PhotoViewerOptions,
   PhotoViewer
 } from '@ionic-native/photo-viewer/ngx';
+import {
+  Downloader,
+  DownloadRequest,
+  NotificationVisibility
+} from '@ionic-native/downloader/ngx';
 import { LoadingController, ToastController } from '@ionic/angular';
 
 @Injectable()
@@ -11,7 +16,8 @@ export class UtilsService {
   constructor(
     private pv: PhotoViewer,
     private loadingCtrl: LoadingController,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private downloader: Downloader,
   ) {}
   getTitleByProcess(process: ProcessEnum): string {
     let title = '';
@@ -79,5 +85,25 @@ export class UtilsService {
           resolve(toast);
         });
     });
+  }
+
+  downloadFile(uri, title, ext) {
+    const request: DownloadRequest = {
+      uri,
+      title,
+      description: '',
+      mimeType: '',
+      visibleInDownloadsUi: true,
+      notificationVisibility: NotificationVisibility.VisibleNotifyCompleted,
+      destinationInExternalFilesDir: {
+        dirType: 'Downloads',
+        subPath: title + ext
+      }
+    };
+
+    this.downloader
+      .download(request)
+      .then(() => this.presentToast('Documento descargado con exito!'))
+      .catch((error: any) => console.error(error));
   }
 }

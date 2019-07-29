@@ -21,13 +21,13 @@ export class EditMaterialPage {
     ) {
       const tempMat = this.navParams.get('obj');
       this.img = tempMat.icon;
-      this.name = tempMat.name;
+      this.name = this.initialName = tempMat.name;
       this.price = tempMat.price;
   }
 
   edit() {
     this.us.presentLoading('editando material...').then(loader => {
-      this.admSrvc.editMaterial({icon: this.img, name: this.name, price: this.price}).then(resp => {
+      this.admSrvc.editMaterial({initialName : this.initialName, icon: this.img, name: this.name, price: this.price}).then(resp => {
         console.log('edit resp modal', resp);
         if (resp) {
           this.name = '';
