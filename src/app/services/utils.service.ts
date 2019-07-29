@@ -19,6 +19,11 @@ export class UtilsService {
     private toastCtrl: ToastController,
     private downloader: Downloader,
   ) {}
+
+getCurrentYear() {
+  return new Date().getFullYear();
+}
+
   getTitleByProcess(process: ProcessEnum): string {
     let title = '';
     switch (process) {

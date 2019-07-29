@@ -1,0 +1,114 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-back-button text="atrás"></ion-back-button>
+      </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Usuarios
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="list-avatar-page" style="background-color: #292929" text-wrap>
+  <ion-list>
+    <ion-list-header class="header">
+      Operarios
+    </ion-list-header>
+    <ion-item-sliding *ngFor="let oper of opers">
+      <ion-item>
+        <h3>Nombre: {{oper.name}} {{oper.lastname}}</h3>
+        <p>
+          Correo: {{oper.email}}
+          <br> Telefono: {{oper.phone}}
+          <br> Estado: <ion-badge color="{{oper.state ? 'secondary' : 'danger'}}">{{oper.state ? 'Activo' : 'Inactivo'}}</ion-badge>
+        </p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button icon-left color="primary" (click)="remove(oper)">
+          <ion-icon name="trash"></ion-icon>
+          Inactivar
+        </button>
+        <button ion-button icon-left color="secondary" (click)="edit(oper)">
+          <ion-icon name="md-create"></ion-icon>
+          Editar
+        </button>
+      </ion-item-options>     
+      <ion-item-options side="left">
+          <button ion-button icon-left color="secondary" (click)="goToUserAssignedLocations(oper)">
+            <ion-icon name="pin"></ion-icon>
+            Locaciones Asignadas
+          </button>
+        </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-list>
+    <ion-list-header class="header">
+      Clientes
+    </ion-list-header>
+    <ion-item-sliding *ngFor="let cust of custs">
+      <ion-item>
+        <h3>Nombre: {{cust.name}} {{cust.lastname}}</h3>
+        <p>
+          Correo: {{cust.email}}
+          <br> Telefono: {{cust.phone}}
+          <br> Estado: <ion-badge color="{{cust.state ? 'secondary' : 'danger'}}">{{cust.state ? 'Activo' : 'Inactivo'}}</ion-badge>
+        </p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button icon-left color="primary" (click)="remove(cust)">
+          <ion-icon name="trash"></ion-icon>
+          Inactivar
+        </button>
+        <button ion-button icon-left color="secondary" (click)="edit(cust)">
+          <ion-icon name="md-create"></ion-icon>
+          Editar
+        </button>
+      </ion-item-options>      
+      <ion-item-options side="left">
+          <button ion-button icon-left color="secondary" (click)="goToUserAssignedLocations(cust)">
+            <ion-icon name="pin"></ion-icon>
+            Locaciones Asignadas
+          </button>
+        </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-list>
+    <ion-list-header class="header">
+      Administradores
+    </ion-list-header>
+    <ion-item-sliding *ngFor="let admin of admins">
+      <ion-item>
+        <h3>Nombre: {{admin.name}} {{admin.lastname}}</h3>
+        <p>
+          Correo: {{admin.email}}
+          <br> Telefono: {{admin.phone}}
+          <br> Estado: <ion-badge color="{{admin.state ? 'secondary' : 'danger'}}">{{admin.state ? 'Activo' : 'Inactivo'}}</ion-badge>
+        </p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button icon-left color="primary" (click)="remove(admin)">
+          <ion-icon name="trash"></ion-icon>
+          Inactivar
+        </button>
+        <button ion-button icon-left color="secondary" (click)="edit(admin)">
+          <ion-icon name="md-create"></ion-icon>
+          Editar
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <button ion-button icon-left block color="success" (click)="newObj()">
+    <ion-icon name="md-add-circle"></ion-icon>
+    Nuevo Usuario
+  </button>
+</ion-content>
+<ion-footer color="dark">
+  <ion-toolbar text-center>
+    <span style="font-size: .8rem; margin-right: 10px;">
+      Fast Fire - Redes contra incendios. &#169; 2019
+    </span>
+  </ion-toolbar>
+</ion-footer>

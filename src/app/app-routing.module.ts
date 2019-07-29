@@ -64,6 +64,10 @@ const routes: Routes = [
     loadChildren: '../app/pages/check-inspections/check-inspections.module#CheckInspectionsPageModule'
   },
   {
+    path: 'usercrudpage',
+    loadChildren: '../app/pages/user-crud/user-crud.module#UserCrudPageModule'
+  },
+  {
     path: 'materialcrudpage',
     loadChildren: '../app/pages/material-crud/material-crud.module#MaterialCrudPageModule'
   },

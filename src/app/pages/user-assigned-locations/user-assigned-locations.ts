@@ -23,8 +23,7 @@ export class UserAssignedLocationsPage {
 
   constructor(
     private actRoute: ActivatedRoute, private router: Router, private alertCtrl: AlertController,
-    public loadingCtrl: LoadingController, private admSrvc: AdminService,
-    private toastCtrl: ToastController, private us: UtilsService) {
+    private admSrvc: AdminService, public us: UtilsService) {
     this.actRoute.queryParams.subscribe(() => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.userSelected = this.router.getCurrentNavigation().extras.state.user;

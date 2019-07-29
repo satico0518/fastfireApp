@@ -15,7 +15,7 @@ export class CheckDailyReportsPage {
   constructor(
     public navCtrl: NavController,
     private admSrvc: AdminService,
-    private us: UtilsService
+    public us: UtilsService
     ) {
 
   }

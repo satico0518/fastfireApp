@@ -11,9 +11,9 @@ export class CheckInspectionsPage {
   inspections: any[];
 
   constructor(
-    public router: Router,
+    private router: Router,
     private admSrvc: AdminService,
-    private us: UtilsService
+    public us: UtilsService
   ) {}
 
   ionViewDidEnter() {

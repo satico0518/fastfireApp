@@ -5,6 +5,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AdminService } from 'src/app/services/admin.service';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { ProcessEnum } from 'src/app/enums/process.enum';
+import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
   selector: 'page-home',
@@ -28,7 +29,8 @@ export class HomePage {
     public afAuth: AngularFireAuth,
     private authServ: AuthService,
     private adminSrvc: AdminService,
-    private ln: LocalNotifications
+    private ln: LocalNotifications,
+    public us: UtilsService
   ) {
     authServ.getCurrentUser().then(usr => {
       this.userProfile = usr.profile;
