@@ -28,6 +28,7 @@ import { ReviewOrderPageModule } from './pages/review-order/review-order.module'
 import { NewMaterialPageModule } from './pages/new-material/new-material.module';
 import { EditMaterialPageModule } from './pages/edit-material/edit-material.module';
 import { Downloader } from '@ionic-native/downloader/ngx';
+import { NewUserPageModule } from './pages/new-user/new-user.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -40,6 +41,7 @@ import { Downloader } from '@ionic-native/downloader/ngx';
     ReviewOrderPageModule,
     NewMaterialPageModule,
     EditMaterialPageModule,
+    NewUserPageModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFireStorageModule,

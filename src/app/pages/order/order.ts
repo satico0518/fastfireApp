@@ -200,7 +200,7 @@ export class OrderPage {
         this.procSrvc.saveInspect(insp).then(resp => {
           // console.log('SaveInspect resp', resp);
           this.us
-            .presentToast('Inspección enviada exitosamente!')
+            .presentToast('Inspección enviada exitosamente!', 'success')
             .then(toast => {
               loader.dismiss();
               toast.onDidDismiss().then(() => {

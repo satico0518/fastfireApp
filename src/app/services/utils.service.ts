@@ -77,13 +77,14 @@ getCurrentYear() {
     });
   }
 
-  presentToast(msg: string): Promise<HTMLIonToastElement> {
+  presentToast(msg: string, color?: string): Promise<HTMLIonToastElement> {
     return new Promise(resolve => {
       this.toastCtrl
         .create({
           message: msg,
           duration: 2000,
-          position: 'bottom'
+          position: 'bottom',
+          color: color || 'light'
         })
         .then(toast => {
           toast.present();
@@ -108,7 +109,15 @@ getCurrentYear() {
 
     this.downloader
       .download(request)
-      .then(() => this.presentToast('Documento descargado con exito!'))
+      .then(() => this.presentToast('Documento descargado con exito!', 'success'))
       .catch((error: any) => console.error(error));
+  }
+
+  validateEmail(email: string): Promise<boolean> {
+    return new Promise(resolve => {
+    // tslint:disable-next-line:max-line-length
+      const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      resolve(re.test(email.toLowerCase()));
+    });
   }
 }

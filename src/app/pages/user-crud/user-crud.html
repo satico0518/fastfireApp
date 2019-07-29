@@ -12,98 +12,104 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding class="list-avatar-page" style="background-color: #292929" text-wrap>
-  <ion-list>
+<ion-content padding color="dark" text-wrap>  
+  <ion-button expand="block" fill="outline" color="success" (click)="newObj()">
+    Nuevo Usuario
+    <ion-icon name="md-add-circle" slot="end"></ion-icon>
+  </ion-button><br>
+    <ion-segment color="light" (ionChange)="segmentChanged($event)">
+        <ion-segment-button value="opers">
+          <ion-icon color="secondary" name="hammer"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="customers">
+          <ion-icon color="secondary" name="person"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="admins">
+          <ion-icon color="secondary" name="settings"></ion-icon>
+        </ion-segment-button>
+      </ion-segment>
+
+  <ion-list *ngIf="opersTab" text-wrap>
     <ion-list-header class="header">
       Operarios
     </ion-list-header>
     <ion-item-sliding *ngFor="let oper of opers">
       <ion-item>
-        <h3>Nombre: {{oper.name}} {{oper.lastname}}</h3>
-        <p>
-          Correo: {{oper.email}}
-          <br> Telefono: {{oper.phone}}
-          <br> Estado: <ion-badge color="{{oper.state ? 'secondary' : 'danger'}}">{{oper.state ? 'Activo' : 'Inactivo'}}</ion-badge>
-        </p>
-      </ion-item>
-      <ion-item-options side="right">
-        <button ion-button icon-left color="primary" (click)="remove(oper)">
-          <ion-icon name="trash"></ion-icon>
-          Inactivar
-        </button>
-        <button ion-button icon-left color="secondary" (click)="edit(oper)">
-          <ion-icon name="md-create"></ion-icon>
-          Editar
-        </button>
-      </ion-item-options>     
-      <ion-item-options side="left">
-          <button ion-button icon-left color="secondary" (click)="goToUserAssignedLocations(oper)">
-            <ion-icon name="pin"></ion-icon>
-            Locaciones Asignadas
-          </button>
-        </ion-item-options>
+        <ion-label>
+          <h4>Nombre: {{oper?.name}} {{oper?.lastname}}</h4>
+          <p>
+            Correo: {{oper?.email}}
+            <br> Telefono: {{oper?.phone}}
+            <ion-badge color="{{oper.state ? 'secondary' : 'danger'}}">{{oper?.state ? 'Activo' : 'Inactivo'}}</ion-badge>
+          </p>
+        </ion-label>        
+      </ion-item>   
+      <ion-item-options>
+        <ion-item-option color="danger" slot="end" (click)="remove(oper)">
+          <ion-icon name="trash" slot="end"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="secondary" slot="end" (click)="edit(oper)">
+          <ion-icon name="md-create" slot="end"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="primary" (click)="goToUserAssignedLocations(oper)">
+          <ion-icon name="pin" slot="start"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>  
     </ion-item-sliding>
   </ion-list>
-  <ion-list>
+  <ion-list *ngIf="customersTab" text-wrap>
     <ion-list-header class="header">
       Clientes
     </ion-list-header>
     <ion-item-sliding *ngFor="let cust of custs">
       <ion-item>
-        <h3>Nombre: {{cust.name}} {{cust.lastname}}</h3>
-        <p>
-          Correo: {{cust.email}}
-          <br> Telefono: {{cust.phone}}
-          <br> Estado: <ion-badge color="{{cust.state ? 'secondary' : 'danger'}}">{{cust.state ? 'Activo' : 'Inactivo'}}</ion-badge>
-        </p>
+        <ion-label>
+          <h4>Nombre: {{cust?.name}} {{cust?.lastname}}</h4>
+          <p>
+            Correo: {{cust?.email}}
+            <br> Telefono: {{cust?.phone}}
+            <ion-badge color="{{cust.state ? 'secondary' : 'danger'}}">{{cust?.state ? 'Activo' : 'Inactivo'}}</ion-badge>
+          </p>
+        </ion-label> 
       </ion-item>
-      <ion-item-options side="right">
-        <button ion-button icon-left color="primary" (click)="remove(cust)">
+      <ion-item-options>
+        <ion-item-option color="danger" (click)="remove(cust)">
           <ion-icon name="trash"></ion-icon>
-          Inactivar
-        </button>
-        <button ion-button icon-left color="secondary" (click)="edit(cust)">
+        </ion-item-option>
+        <ion-item-option color="secondary" (click)="edit(cust)">
           <ion-icon name="md-create"></ion-icon>
-          Editar
-        </button>
-      </ion-item-options>      
-      <ion-item-options side="left">
-          <button ion-button icon-left color="secondary" (click)="goToUserAssignedLocations(cust)">
-            <ion-icon name="pin"></ion-icon>
-            Locaciones Asignadas
-          </button>
-        </ion-item-options>
+        </ion-item-option>
+        <ion-item-option color="primary" (click)="goToUserAssignedLocations(cust)">
+          <ion-icon name="pin"></ion-icon>
+        </ion-item-option>
+      </ion-item-options> 
     </ion-item-sliding>
   </ion-list>
-  <ion-list>
+  <ion-list *ngIf="adminsTab" text-wrap>
     <ion-list-header class="header">
       Administradores
     </ion-list-header>
     <ion-item-sliding *ngFor="let admin of admins">
       <ion-item>
-        <h3>Nombre: {{admin.name}} {{admin.lastname}}</h3>
-        <p>
-          Correo: {{admin.email}}
-          <br> Telefono: {{admin.phone}}
-          <br> Estado: <ion-badge color="{{admin.state ? 'secondary' : 'danger'}}">{{admin.state ? 'Activo' : 'Inactivo'}}</ion-badge>
-        </p>
+        <ion-label>
+          <h3>Nombre: {{admin?.name}} {{admin?.lastname}}</h3>
+          <p>
+            Correo: {{admin?.email}}
+            <br> Telefono: {{admin?.phone}}
+            <ion-badge color="{{admin.state ? 'secondary' : 'danger'}}">{{admin?.state ? 'Activo' : 'Inactivo'}}</ion-badge>
+          </p>
+        </ion-label>
       </ion-item>
-      <ion-item-options side="right">
-        <button ion-button icon-left color="primary" (click)="remove(admin)">
+      <ion-item-options>
+        <ion-item-option color="danger" (click)="remove(admin)">
           <ion-icon name="trash"></ion-icon>
-          Inactivar
-        </button>
-        <button ion-button icon-left color="secondary" (click)="edit(admin)">
+        </ion-item-option>
+        <ion-item-option color="secondary" (click)="edit(admin)">
           <ion-icon name="md-create"></ion-icon>
-          Editar
-        </button>
+        </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
-  <button ion-button icon-left block color="success" (click)="newObj()">
-    <ion-icon name="md-add-circle"></ion-icon>
-    Nuevo Usuario
-  </button>
 </ion-content>
 <ion-footer color="dark">
   <ion-toolbar text-center>

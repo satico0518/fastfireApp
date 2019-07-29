@@ -80,7 +80,7 @@ export class OrderDetailPage {
                     if (resp) {
                       loader.dismiss();
                       this.util
-                        .presentToast('Inspección Chequeada exitosamente!')
+                        .presentToast('Inspección Chequeada exitosamente!', 'success')
                         .then(toast => {
                           toast.present();
                           toast.onDidDismiss().then(() => {

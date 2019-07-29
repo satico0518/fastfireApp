@@ -127,8 +127,8 @@ export class AdminService {
         this.afAuth.auth
           .createUserWithEmailAndPassword(user.email, 'ff12345')
           .then((resp: any) => {
-            console.log('ok creacion ID', resp.uid);
-            user.id = resp.uid;
+            console.log('ok creacion ID', resp.user.uid);
+            user.id = resp.user.uid;
             const usrObj = {
               id: user.id,
               email: user.email,
@@ -151,12 +151,12 @@ export class AdminService {
                 resolve(true);
               })
               .catch(err => {
-                this.presentToast(err.message).then(() => resolve(false));
+                this.presentToast(err.message, 'danger').then(() => resolve(false));
               });
           })
           .catch(err => {
             console.log('error de creacion', err);
-            this.presentToast(err.message).then(() => resolve(false));
+            this.presentToast(err.message, 'danger').then(() => resolve(false));
           });
       } catch (error) {
         resolve(false);
@@ -334,7 +334,7 @@ export class AdminService {
             resolve(true);
           })
           .catch(err => {
-            this.presentToast(err.message).then(() => resolve(false));
+            this.presentToast(err.message, 'danger').then(() => resolve(false));
           });
       } catch (error) {
         resolve(false);
@@ -448,7 +448,7 @@ export class AdminService {
             resolve(true);
           })
           .catch(err => {
-            this.presentToast(err.message).then(() => resolve(false));
+            this.presentToast(err.message, 'danger').then(() => resolve(false));
           });
       } catch (error) {
         resolve(false);
@@ -469,7 +469,7 @@ export class AdminService {
             resolve(true);
           })
           .catch(err => {
-            this.presentToast(err.message).then(() => resolve(false));
+            this.presentToast(err.message, 'danger').then(() => resolve(false));
           });
       } catch (error) {
         resolve(false);
@@ -490,7 +490,7 @@ export class AdminService {
             resolve(true);
           })
           .catch(err => {
-            this.presentToast(err.message).then(() => resolve(false));
+            this.presentToast(err.message, 'danger').then(() => resolve(false));
           });
       } catch (error) {
         resolve(false);
@@ -538,11 +538,11 @@ export class AdminService {
                   resolve(true);
                 })
                 .catch(err => {
-                  this.presentToast(err.message).then(() => resolve(false));
+                  this.presentToast(err.message, 'danger').then(() => resolve(false));
                 });
             })
             .catch(err => {
-              this.presentToast(err.message).then(() => resolve(false));
+              this.presentToast(err.message, 'danger').then(() => resolve(false));
             });
         }
 
@@ -568,15 +568,15 @@ export class AdminService {
                     resolve(true);
                   })
                   .catch(err => {
-                    this.presentToast(err.message).then(() => resolve(false));
+                    this.presentToast(err.message, 'danger').then(() => resolve(false));
                   });
               })
               .catch(err => {
-                this.presentToast(err.message).then(() => resolve(false));
+                this.presentToast(err.message, 'danger').then(() => resolve(false));
               });
           })
           .catch(err => {
-            this.presentToast(err.message).then(() => resolve(false));
+            this.presentToast(err.message, 'danger').then(() => resolve(false));
           });
       } catch (error) {
         resolve(false);
@@ -598,7 +598,7 @@ export class AdminService {
             resolve(true);
           })
           .catch(err => {
-            this.presentToast(err.message).then(() => resolve(false));
+            this.presentToast(err.message, 'danger').then(() => resolve(false));
           });
       } catch (error) {
         resolve(false);
@@ -620,7 +620,7 @@ export class AdminService {
             resolve(true);
           })
           .catch(err => {
-            this.presentToast(err.message).then(() => resolve(false));
+            this.presentToast(err.message, 'danger').then(() => resolve(false));
           });
       } catch (error) {
         resolve(false);
@@ -693,7 +693,7 @@ export class AdminService {
   }
   //endregion
 
-  presentToast(message: string): Promise<void> {
+  presentToast(message: string, color: string): Promise<void> {
     return new Promise(resolve => {
       if (message.includes('is already in use')) {
         this.errorMsg =
@@ -710,7 +710,8 @@ export class AdminService {
       this.toastCtrl.create({
         message: this.errorMsg,
         duration: 5000,
-        position: 'bottom'
+        position: 'bottom',
+        color
       }).then(toast => {
         toast.present();
         toast.onDidDismiss().then(() => {

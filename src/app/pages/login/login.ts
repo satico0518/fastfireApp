@@ -25,7 +25,7 @@ export class LoginPage {
   login() {
     try {
       if (!this.user.email) {
-        this.presentToast('badly formatted');
+        this.presentToast('badly formatted', 'danger');
         return;
       }
       this.afAuth.auth.signInWithEmailAndPassword(this.user.email.toLowerCase().trim(), this.user.pass).then(resp => {
@@ -33,22 +33,21 @@ export class LoginPage {
         if (resp) {
           this.authSrvc.setCurrentUser(this.user).then((success) => {
             if (success) {
-              debugger
               this.authSrvc.userChange.next(this.user);
               this.router.navigate(['homepage']);
               this.errorMsg = '';
             }
           });
         }
-      }, (e) => this.presentToast(e.message))
-        .catch((e) => this.presentToast(e.message));
+      }, (e) => this.presentToast(e.message, 'danger'))
+        .catch((e) => this.presentToast(e.message, 'danger'));
     } catch (e) {
-      this.presentToast(e.message);
+      this.presentToast(e.message, 'danger');
       console.error('Error de Login: ', e);
     }
   }
 
-  async presentToast(message: string) {
+  async presentToast(message: string, color: string) {
     if (message.includes('badly formatted')) {
       this.errorMsg = 'Formato inválido de correo!';
     } else if (message.includes('First argument "email" must be a valid string')) {
@@ -63,7 +62,8 @@ export class LoginPage {
     const toast = await this.toastCtrl.create({
       message: this.errorMsg,
       duration: 5000,
-      position: 'bottom'
+      position: 'bottom',
+      color
     });
     toast.present();
   }

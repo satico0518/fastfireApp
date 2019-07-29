@@ -2,20 +2,24 @@ import { Component } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
 import { ICrud } from '../../interfaces/crud.interface';
 import { UserModel } from '../../models/user.model';
-import { UserAssignedLocationsPage } from '../user-assigned-locations/user-assigned-locations';
 import { ProcessEnum } from '../../enums/process.enum';
 import { Router } from '@angular/router';
 import { ModalController, AlertController } from '@ionic/angular';
 import { UtilsService } from 'src/app/services/utils.service';
+import { NewUserPage } from '../new-user/new-user';
 
 @Component({
   selector: 'page-user-crud',
-  templateUrl: 'user-crud.html'
+  templateUrl: 'user-crud.html',
+  styleUrls: ['user-crud.scss']
 })
 export class UserCrudPage implements ICrud {
   opers: any[];
   custs: any[];
   admins: any[];
+  opersTab = true;
+  customersTab = false;
+  adminsTab = false;
 
   constructor(
     public router: Router,
@@ -23,7 +27,31 @@ export class UserCrudPage implements ICrud {
     public modalCtrl: ModalController,
     private alert: AlertController,
     public us: UtilsService
-  ) {}
+  ) {
+    this.getObj();
+  }
+
+  segmentChanged(e) {
+    switch (e.detail.value) {
+      case 'customers':
+        this.opersTab = false;
+        this.customersTab = true;
+        this.adminsTab = false;
+        break;
+      case 'opers':
+        this.opersTab = true;
+        this.customersTab = false;
+        this.adminsTab = false;
+        break;
+      case 'admins':
+        this.opersTab = false;
+        this.customersTab = false;
+        this.adminsTab = true;
+        break;
+      default:
+        break;
+    }
+  }
 
   getObj(): Promise<void> {
     return new Promise(resolve => {
@@ -58,9 +86,9 @@ export class UserCrudPage implements ICrud {
   }
 
   newObj(): void {
-    // this.modalCtrl
-    //   .create({ component: NewUserPage })
-    //   .then(modal => modal.present());
+    this.modalCtrl
+      .create({ component: NewUserPage })
+      .then(modal => modal.present());
   }
 
   edit(obj: any) {

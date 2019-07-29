@@ -131,7 +131,7 @@ export class DailyReportPage {
           .then((resp: any) => {
             console.log('SaveDailyReportt resp', resp);
             if (resp.id) {
-              this.us.presentToast('Avance enviado exitosamente!').then(toast => {
+              this.us.presentToast('Avance enviado exitosamente!', 'success').then(toast => {
                 toast.onDidDismiss().then(() => {
                   this.navCtrl.navigateRoot('/');
                 });

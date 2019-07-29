@@ -44,7 +44,7 @@ export class ReportDetailPage {
             this.us.presentLoading('Chequeando avance...').then(loader => {
               this.admnSrvc.checkReport(this.report.creationDate).then(resp => {
               if (resp) {
-                this.us.presentToast('Avance Chequeado exitosamente!').then(toast => {
+                this.us.presentToast('Avance Chequeado exitosamente!', 'success').then(toast => {
                   this.toast = toast;
                   this.navCtrl.back();
                 });
@@ -52,7 +52,7 @@ export class ReportDetailPage {
               }
               }).catch(err => {
                 loader.dismiss();
-                this.us.presentToast(JSON.stringify(err)).then(toast => toast.present());
+                this.us.presentToast(JSON.stringify(err), 'danger').then(toast => toast.present());
               });
             });
           }

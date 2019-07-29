@@ -105,7 +105,7 @@ export class SitetestPage {
         this.procSrvc.saveSiteTest(test).then(resp => {
           console.log('SaveInspect resp', resp);
           loader.dismiss();
-          this.us.presentToast('Prueba enviada exitosamente!').then(toast => {
+          this.us.presentToast('Prueba enviada exitosamente!', 'success').then(toast => {
             toast.onDidDismiss().then(() => {
               this.router.navigate(['/']);
             });

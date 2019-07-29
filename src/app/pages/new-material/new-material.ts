@@ -20,7 +20,7 @@ export class NewMaterialPage {
 
   add() {
     if (!this.name) {
-      this.us.presentToast('Debe asignar un nombre al material!').then(toast => {
+      this.us.presentToast('Debe asignar un nombre al material!', 'danger').then(toast => {
         toast.present();
       });
     } else {
@@ -30,7 +30,7 @@ export class NewMaterialPage {
           if (resp) {
             this.name = '';
             this.price = 0;
-            this.us.presentToast('Material Creado exitosamente!').then(toast => {
+            this.us.presentToast('Material Creado exitosamente!', 'success').then(toast => {
                 toast.present();
                 loader.dismiss();
                 toast.onDidDismiss().then(() => {

@@ -41,7 +41,7 @@ export class UserAssignedLocationsPage {
     }
     this.us.presentLoading('Cargando locaciones asignadas...').then(loader => this.loadingElement = loader);
     if (!this.userSelected) {
-      this.us.presentToast('usuario indefinido').then(toast => this.toast = toast);
+      this.us.presentToast('usuario indefinido', 'danger').then(toast => this.toast = toast);
       setTimeout(() => {
         this.router.navigate(['/']);
         this.loadingElement.dismiss();
@@ -82,7 +82,7 @@ export class UserAssignedLocationsPage {
             this.us.presentLoading('Desasignando locación...').then(loader => this.loadingElement = loader);
             this.admSrvc.removeAssignedLoc(loc).then(resp => {
               if (resp) {
-                this.us.presentToast('Locación Desasignada exitosamente!').then(toast => this.toast = toast);
+                this.us.presentToast('Locación Desasignada exitosamente!', 'success').then(toast => this.toast = toast);
                 this.toast.onDidDismiss().then(() => {
                   this.router .navigate(['/']);
                 });

@@ -32,7 +32,7 @@ export class EditMaterialPage {
         if (resp) {
           this.name = '';
           this.price = 0;
-          this.us.presentToast('Material Editado exitosamente!').then(toast => {
+          this.us.presentToast('Material Editado exitosamente!', 'success').then(toast => {
             loader.dismiss();
             toast.present();
             toast.onDidDismiss().then(() => {

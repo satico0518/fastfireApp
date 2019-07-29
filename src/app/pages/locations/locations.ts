@@ -116,11 +116,12 @@ export class LocationsPage {
     }
   }
 
-  async presentToast(msg: string) {
+  async presentToast(msg: string, color: string) {
     this.toast = await this.toastCtrl.create({
       message: msg,
       duration: 2000,
-      position: 'bottom'
+      position: 'bottom',
+      color
     });
     this.toast.present();
   }
@@ -144,7 +145,7 @@ export class LocationsPage {
                 .authorizeLocToUser(loc)
                 .then(resp => {
                   if (resp) {
-                    this.presentToast('Locación Asignada exitosamente!');
+                    this.presentToast('Locación Asignada exitosamente!', 'success');
                     this.toast.onDidDismiss().then(() => {
                       this.router.navigate(['/']);
                     });
