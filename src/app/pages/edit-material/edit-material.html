@@ -1,0 +1,36 @@
+<ion-header color="danger">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-back-button text="atrás"></ion-back-button>
+      </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+        Editar Material
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding color="dark" text-wrap>
+  <img [src]="img" />
+    <ion-button expand="block" fill="outline" color="secondary" (click)="takePhoto()">
+      Cambiar Foto
+      <ion-icon name="camera" slot="end"></ion-icon>
+    </ion-button>
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input [(ngModel)]="name" type="text"></ion-input>
+    <ion-label position="floating">Precio</ion-label>
+    <ion-input [(ngModel)]="price" type="number"></ion-input>
+    <ion-button  expand="block" fill="outline" color="success" (click)="edit()">
+      Guardar
+      <ion-icon name="md-add-circle" slot="end"></ion-icon>
+    </ion-button>
+</ion-content>
+<ion-footer color="dark">
+  <ion-toolbar text-center>
+    <span style="font-size: .8rem; margin-right: 10px;">
+      Fast Fire - Redes contra incendios. &copy; 2019
+    </span>
+  </ion-toolbar>
+</ion-footer>

@@ -25,6 +25,8 @@ import { ProcessService } from './services/process.service';
 import { Camera } from '@ionic-native/camera/ngx';
 import { MaterialsPageModule } from './pages/materials/materials.module';
 import { ReviewOrderPageModule } from './pages/review-order/review-order.module';
+import { NewMaterialPageModule } from './pages/new-material/new-material.module';
+import { EditMaterialPageModule } from './pages/edit-material/edit-material.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,6 +37,8 @@ import { ReviewOrderPageModule } from './pages/review-order/review-order.module'
     AppRoutingModule,
     MaterialsPageModule,
     ReviewOrderPageModule,
+    NewMaterialPageModule,
+    EditMaterialPageModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFireStorageModule,

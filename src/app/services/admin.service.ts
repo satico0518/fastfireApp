@@ -640,9 +640,9 @@ export class AdminService {
             console.log('new resp srvc', resp);
             resolve(true);
           })
-          .catch(err => resolve(false));
+          .catch(err => reject(false));
       } catch (error) {
-        resolve(false);
+        reject(false);
       }
     });
   }
