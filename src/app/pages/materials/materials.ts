@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProcessService } from '../../services/process.service';
 import { AlertController, ModalController, NavParams } from '@ionic/angular';
 import { UtilsService } from 'src/app/services/utils.service';
@@ -7,7 +7,7 @@ import { UtilsService } from 'src/app/services/utils.service';
   selector: 'page-materials',
   templateUrl: 'materials.html'
 })
-export class MaterialsPage {
+export class MaterialsPage implements OnInit {
   requestedMaterials = [];
   materials: any;
 
@@ -21,7 +21,7 @@ export class MaterialsPage {
     this.requestedMaterials = this.navParams.get('requestedMaterials');
   }
 
-  ionViewDidEnter() {
+  ngOnInit() {
     this.procSrvc.getMaterials().then(list => {
       list.subscribe(data => {
         this.materials = data;

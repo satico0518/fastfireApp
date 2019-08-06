@@ -23,7 +23,7 @@ export class ProcessService {
     getCustomers(): Promise<CustomerModel[]> {
         return new Promise((resolve) => {
             const customers = [];
-            this.afs.collection('users', ref => ref.where('state', '==', true)).get()
+            this.afs.collection('customers', ref => ref.where('state', '==', true)).get()
                 .subscribe((querySnapshot) => {
                     querySnapshot.forEach((doc: any) => {
                         customers.push({ id: doc.id, data: doc.data() });

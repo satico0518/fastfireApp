@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
 import { ReportDetailPage } from '../report-detail/report-detail';
 import { NavController } from '@ionic/angular';
@@ -8,7 +8,7 @@ import { UtilsService } from 'src/app/services/utils.service';
   selector: 'page-check-daily-reports',
   templateUrl: 'check-daily-reports.html',
 })
-export class CheckDailyReportsPage {
+export class CheckDailyReportsPage implements OnInit {
 
   reports: any[];
 
@@ -20,7 +20,7 @@ export class CheckDailyReportsPage {
 
   }
 
-  ionViewDidEnter() {
+  ngOnInit() {
     this.us.presentLoading('cargando avances').then(loader => {
       this.admSrvc.getCreatedReports().subscribe(list => {
         this.reports = list;

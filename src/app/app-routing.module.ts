@@ -80,6 +80,22 @@ const routes: Routes = [
     loadChildren: '../app/pages/location-crud/location-crud.module#LocationCrudPageModule'
   },
   {
+    path: 'reportspage',
+    loadChildren: '../app/pages/reports/reports.module#ReportsPageModule'
+  },
+  {
+    path: 'operspage',
+    loadChildren: '../app/pages/opers/opers.module#OpersPageModule'
+  },
+  {
+    path: 'checkhistoricinspectionspage',
+    loadChildren: '../app/pages/check-historic-inspections/check-historic-inspections.module#CheckHistoricInspectionsPageModule'
+  },
+  {
+    path: 'checkhistoricdailyreportspage',
+    loadChildren: '../app/pages/check-historic-daily-reports/check-historic-daily-reports.module#CheckHistoricDailyReportsPageModule'
+  },
+  {
     path: 'planescrudpage',
     loadChildren: '../app/pages/planes-crud/planes-crud.module#PlanesCrudPageModule'
   },

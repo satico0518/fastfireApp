@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -12,7 +12,7 @@ import { UtilsService } from 'src/app/services/utils.service';
   templateUrl: 'home.html',
   styleUrls: ['home.scss']
 })
-export class HomePage {
+export class HomePage implements OnInit {
   userProfile: string;
   email: string;
   today: string;
@@ -43,9 +43,9 @@ export class HomePage {
     }/${dt.getFullYear()}`;
   }
 
-  ionViewWillLoad() {
+  ngOnInit() {
     this.afAuth.authState.subscribe(state => {
-      alert('state ' + JSON.stringify(state));
+      // alert('state ' + JSON.stringify(state));
       if (!state) {
         this.router.navigate(['loginpage']);
       } else {
@@ -82,6 +82,9 @@ export class HomePage {
         });
       }
     });
+    this.authServ.getCurrentUser().then(user => {
+      this.email = user.email;
+    });
   }
 
   goToCustomers(process: string) {
@@ -108,12 +111,6 @@ export class HomePage {
         }
       };
       this.router.navigate(['userassignedlocationspage'], navigationExtras);
-    });
-  }
-
-  ionViewDidEnter() {
-    this.authServ.getCurrentUser().then(user => {
-      this.email = user.email;
     });
   }
 }

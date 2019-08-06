@@ -116,6 +116,10 @@ export class AdminService {
     });
   }
 
+  getOpers(): Observable<any[]> {
+    return this.afs.collection('users', ref => ref.where('profile', '==', 'oper')).valueChanges();
+  }
+
   //#region User
   getUsers(): Observable<any[]> {
     return this.afs.collection('users').valueChanges();
@@ -548,8 +552,7 @@ export class AdminService {
             .collection('locations')
             .doc(lockey)
             .collection('planes');
-          ref
-            .add(plane)
+          ref.add(plane)
             .then(resp => {
               ref
                 .doc(resp.id)

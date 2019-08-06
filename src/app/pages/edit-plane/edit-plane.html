@@ -1,0 +1,50 @@
+<ion-header color="danger">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-back-button text="atrás"></ion-back-button>
+      </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Editar Plano
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding color="dark" text-wrap>
+  <img *ngIf="!plane.url.includes('firebasestorage')" width="100%" [src]="plane.url || us.notAvailableImage" />
+  <img *ngIf="plane.url.includes('firebasestorage')" width="100%" [src]="'../../../assets/imgs/planos.png' || us.notAvailableImage" />
+  <br>
+  <ion-item>
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input [(ngModel)]="plane.name" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Estado</ion-label>
+    <ion-select [(ngModel)]="plane.state" multiple="false">
+      <ion-select-option [value]="true">Activar</ion-select-option>
+      <ion-select-option [value]="false">Inactivar</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-button expand="block" fill="outline" color="secondary" (click)="takePhoto()">
+    <ion-icon name="camara" slot="end"></ion-icon>
+    Cambiar Plano (Foto)
+  </ion-button>
+  <ion-button expand="block" fill="outline" color="secondary" (click)="upload()">
+    <ion-icon name="md-folder-open" slot="end"></ion-icon>
+    Cambiar Plano (PDF)
+  </ion-button>
+  <ion-button expand="block" fill="outline" color="success" (click)="edit()">
+    <ion-icon name="md-add-circle" slot="end"></ion-icon>
+    Guardar Plano
+  </ion-button>
+</ion-content>
+<ion-footer color="dark">
+  <ion-button expand="block" color="danger" (click)="closeModal()">Cerrar</ion-button>
+  <ion-toolbar text-center>
+    <span style="font-size: .8rem; margin-right: 10px;">
+      Fast Fire - Redes contra incendios. &#169; {{us.getCurrentYear()}}
+    </span>
+  </ion-toolbar>
+</ion-footer>

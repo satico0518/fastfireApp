@@ -1,0 +1,32 @@
+<ion-header color="danger">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-back-button text="atrás"></ion-back-button>
+      </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Operarios
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding color="dark" text-wrap>
+  <ion-list>
+    <ion-item *ngFor="let oper of opers" (click)="goToHistoric(oper)">
+      <ion-label>
+        {{oper.name}} {{oper.lastname}}
+        <p style="font-size: .9rem; color: rgb(117, 117, 117)">{{oper.email}}</p>
+      </ion-label>
+      <ion-icon name="ios-arrow-forward" slot="end"></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer color="dark">
+  <ion-toolbar text-center>
+    <span style="font-size: .8rem; margin-right: 10px;">
+      Fast Fire - Redes contra incendios. &#169; {{us.getCurrentYear()}}
+    </span>
+  </ion-toolbar>
+</ion-footer>

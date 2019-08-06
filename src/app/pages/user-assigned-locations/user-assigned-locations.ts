@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
 import { ProcessEnum } from '../../enums/process.enum';
 import { UserModel } from '../../models/user.model';
@@ -11,7 +11,7 @@ import { UtilsService } from 'src/app/services/utils.service';
   templateUrl: 'user-assigned-locations.html',
   styleUrls: ['user-assigned-locations.scss']
 })
-export class UserAssignedLocationsPage {
+export class UserAssignedLocationsPage implements OnInit {
 
   isCustomerCheck: boolean;
   isAssignLoc: boolean;
@@ -32,7 +32,7 @@ export class UserAssignedLocationsPage {
     });
   }
 
-  ionViewWillEnter() {
+  ngOnInit() {
     if (this.process === ProcessEnum.AssignLocsToUser) {
       this.isAssignLoc = true;
       this.isCustomerCheck = false;

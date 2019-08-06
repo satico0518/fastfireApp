@@ -34,7 +34,7 @@
           <span>{{pln?.name}}</span>
           <span  style="font-size: .8rem; color: rgb(117, 117, 117)">
             <a *ngIf="pln.url && pln.url.includes('firebasestorage')" href="{{pln.url}}" target="_blank">
-            <img class="img-download" src="../../../assets/imgs/pdf-icon.png">
+             <img class="img-download" src="../../../assets/imgs/pdf-icon.png">
             </a>
             <p>
               Fecha de subida: {{pln?.uploadDate.toDate() | date:'dd MMM yyyy HH:mm'}}

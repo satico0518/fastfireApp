@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
 import { Router } from '@angular/router';
 import { UtilsService } from 'src/app/services/utils.service';
@@ -7,7 +7,7 @@ import { UtilsService } from 'src/app/services/utils.service';
   selector: 'page-check-inspections',
   templateUrl: 'check-inspections.html'
 })
-export class CheckInspectionsPage {
+export class CheckInspectionsPage implements OnInit {
   inspections: any[];
 
   constructor(
@@ -16,7 +16,7 @@ export class CheckInspectionsPage {
     public us: UtilsService
   ) {}
 
-  ionViewDidEnter() {
+  ngOnInit() {
     this.us.presentLoading('cargando inspecciones...').then(loader => {
       this.admSrvc.getCreatedInspections().subscribe(list => {
         this.inspections = list;

@@ -19,6 +19,6 @@ import { RouterModule } from '@angular/router';
         component: EditLocationPage
       }
     ])
-  ],
+  ]
 })
 export class EditLocationPageModule {}

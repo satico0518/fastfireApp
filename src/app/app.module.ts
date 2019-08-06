@@ -12,7 +12,6 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { firebaseConfig } from 'src/environments/environment';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { AuthService } from './services/auth.service';
 import { AdminService } from './services/admin.service';
@@ -38,6 +37,8 @@ import { NewPlanePageModule } from './pages/new-plane/new-plane.module';
 import { FilePath } from '@ionic-native/file-path/ngx';
 import { FileChooser } from '@ionic-native/file-chooser/ngx';
 import { File } from '@ionic-native/file/ngx';
+import { EditPlanePageModule } from './pages/edit-plane/edit-plane.module';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -57,7 +58,8 @@ import { File } from '@ionic-native/file/ngx';
     EditLocationPageModule,
     NewLocationPageModule,
     NewPlanePageModule,
-    AngularFireModule.initializeApp(firebaseConfig),
+    EditPlanePageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFireStorageModule,
     AngularFirestoreModule

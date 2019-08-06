@@ -46,8 +46,10 @@ export class NewPlanePage {
                 this.modal.dismiss();
               });
             });
+          } else {
+            loader.dismiss();
           }
-        });
+        }, (err) => loader.dismiss());
       });
     });
   }
@@ -66,20 +68,21 @@ export class NewPlanePage {
         alert.present();
         return;
       });
-    }
-    this.fc.open().then(file => {
-      this.fp.resolveNativePath(file).then(resolvedPath => {
-        this.file.resolveLocalFilesystemUrl(resolvedPath).then(newUrl => {
-          let dirPath = newUrl.nativeURL;
-          const segms = dirPath.split('/');
-          segms.pop();
-          dirPath = segms.join('/');
-          this.file.readAsArrayBuffer(dirPath, newUrl.name).then(buff => {
-            this.uploadToStorage(buff);
+    } else {
+      this.fc.open().then(file => {
+        this.fp.resolveNativePath(file).then(resolvedPath => {
+          this.file.resolveLocalFilesystemUrl(resolvedPath).then(newUrl => {
+            let dirPath = newUrl.nativeURL;
+            const segms = dirPath.split('/');
+            segms.pop();
+            dirPath = segms.join('/');
+            this.file.readAsArrayBuffer(dirPath, newUrl.name).then(buff => {
+              this.uploadToStorage(buff);
+            });
           });
         });
       });
-    });
+    }
   }
 
   uploadToStorage(buff) {

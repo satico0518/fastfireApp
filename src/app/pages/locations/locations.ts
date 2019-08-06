@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProcessEnum } from '../../enums/process.enum';
 import { UtilsService } from '../../services/utils.service';
 import { ProcessService } from '../../services/process.service';
@@ -14,7 +14,7 @@ import {
   selector: 'page-locations',
   templateUrl: 'locations.html'
 })
-export class LocationsPage {
+export class LocationsPage implements OnInit {
   currentProcess: ProcessEnum;
   locations: any;
   title: string;
@@ -56,11 +56,11 @@ export class LocationsPage {
             break;
           case ProcessEnum.CheckHistInspLoc:
           case ProcessEnum.CheckHistInspOper:
-            // this.nextPage = CheckHistoricInspectionsPage;
+            this.nextPage = 'checkhistoricinspectionspage';
             break;
           case ProcessEnum.CheckHistReportLoc:
           case ProcessEnum.CheckHistReportOper:
-            // this.nextPage = CheckHistoricDailyReportsPage;
+            this.nextPage = 'checkhistoricdailyreportspage';
             break;
           default:
             break;
@@ -69,7 +69,7 @@ export class LocationsPage {
     });
   }
 
-  ionViewWillEnter() {
+  ngOnInit() {
     this.us.presentLoading('Cargando locaciones...').then(loader => {
       if (
         this.currentProcess === ProcessEnum.CheckHistInspLoc ||

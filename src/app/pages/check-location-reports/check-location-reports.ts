@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
 import { LocationModel } from '../../models/location.model';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -9,7 +9,7 @@ import { UtilsService } from 'src/app/services/utils.service';
   templateUrl: 'check-location-reports.html',
   styleUrls: ['check-location-reports.scss']
 })
-export class CheckLocationReportsPage {
+export class CheckLocationReportsPage implements OnInit {
 
   reports: any[];
   currentLoc: LocationModel;
@@ -25,7 +25,7 @@ export class CheckLocationReportsPage {
     });
   }
 
-  ionViewDidEnter() {
+  ngOnInit() {
     this.us.presentLoading('cargando locaciones ...').then(loader => this.loader = loader);
     this.admSrvc.getLocationReports(this.currentLoc.key).subscribe(list => {
         this.reports = list;

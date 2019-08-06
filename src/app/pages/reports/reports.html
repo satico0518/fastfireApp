@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-back-button text="atrás"></ion-back-button>
+      </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Reportes
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding color="dark">
+  <ion-item *ngFor="let rep of reports" (click)="goToReport(rep.process)">
+    <ion-icon name="{{rep.icon}}"></ion-icon>
+    <ion-label text-wrap>
+      {{rep.name}}
+      <p style="font-size: .8rem; color: rgb(117, 117, 117)">{{rep.desc}}</p>
+    </ion-label>    
+  </ion-item>
+</ion-content>
+<ion-footer color="dark">
+  <ion-toolbar text-center>
+    <span style="font-size: .8rem; margin-right: 10px;">
+      Fast Fire - Redes contra incendios. &#169; {{us.getCurrentYear()}}
+    </span>
+  </ion-toolbar>
+</ion-footer>

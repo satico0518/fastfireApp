@@ -8,6 +8,7 @@ import { NavParams, ModalController, AlertController } from '@ionic/angular';
 import { UtilsService } from 'src/app/services/utils.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NewPlanePage } from '../new-plane/new-plane';
+import { EditPlanePage } from '../edit-plane/edit-plane';
 
 @Component({
   selector: 'page-planes-crud',
@@ -58,6 +59,9 @@ export class PlanesCrudPage implements ICrud {
           text: 'Inactivar',
           handler: () => {
             this.admSrvc.removePlane(pln, this.loc.key).then(resp => {
+              this.us.presentToast('Plano inhabilitado exitosamente!', 'success').then(toast => {
+                this.getObj();
+              });
             });
           }
         }
@@ -67,8 +71,11 @@ export class PlanesCrudPage implements ICrud {
 
   edit(pln: any) {
     const obj = { pln, loc: this.loc };
-    // this.modal.create({ component: EditPlanePage, componentProps: { obj }})
-    //   .then(modal => modal.present());
+    this.modal.create({ component: EditPlanePage, componentProps: { obj }})
+      .then(modal => {
+        modal.present();
+        modal.onDidDismiss().then(() => this.getObj());
+      });
   }
 
   safeUrl(url: string): SafeUrl {

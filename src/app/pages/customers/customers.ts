@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProcessEnum } from 'src/app/enums/process.enum';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProcessService } from 'src/app/services/process.service';
@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
   selector: 'page-customers',
   templateUrl: 'customers.html',
 })
-export class CustomersPage {
+export class CustomersPage implements OnInit {
 
   customers: any;
   currentProcess: ProcessEnum;
@@ -29,7 +29,7 @@ export class CustomersPage {
       });
   }
 
-  ionViewDidEnter() {
+  ngOnInit() {
     this.initializeItems();
   }
 
