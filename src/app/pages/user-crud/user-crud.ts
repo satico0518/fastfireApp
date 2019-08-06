@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { ModalController, AlertController } from '@ionic/angular';
 import { UtilsService } from 'src/app/services/utils.service';
 import { NewUserPage } from '../new-user/new-user';
+import { EditUserPage } from '../edit-user/edit-user';
 
 @Component({
   selector: 'page-user-crud',
@@ -88,13 +89,16 @@ export class UserCrudPage implements ICrud {
   newObj(): void {
     this.modalCtrl
       .create({ component: NewUserPage })
-      .then(modal => modal.present());
+      .then(modal => {
+        modal.present();
+        modal.onDidDismiss().then(() => this.getObj());
+      });
   }
 
   edit(obj: any) {
-    // this.modalCtrl
-    //   .create({ component: EditUserPage, componentProps: { obj } })
-    //   .then(modal => modal.present());
+    this.modalCtrl
+      .create({ component: EditUserPage, componentProps: { obj } })
+      .then(modal => modal.present());
   }
 
   remove(user: UserModel) {

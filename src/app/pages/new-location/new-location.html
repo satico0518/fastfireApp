@@ -1,34 +1,29 @@
-<ion-header color="danger">
+<ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-        <ion-back-button text="atrás"></ion-back-button>
-      </ion-buttons>
+      <ion-back-button text="atrás"></ion-back-button>
+    </ion-buttons>
     <ion-buttons slot="end">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-        Editar Material
+      Nueva Locación
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding color="dark" text-wrap>
-  <img [src]="img" width="100%"/><br><br>
   <ion-item>
     <ion-label position="floating">Nombre</ion-label>
     <ion-input [(ngModel)]="name" type="text"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Precio</ion-label>
-    <ion-input [(ngModel)]="price" type="number"></ion-input>
-  </ion-item><br>
-  <ion-button expand="block" fill="outline" color="secondary" (click)="takePhoto()">
-    Cambiar Foto
-    <ion-icon name="camera" slot="end"></ion-icon>
-  </ion-button>
-  <ion-button  expand="block" fill="outline" color="success" (click)="edit()">
-    Guardar
+    <ion-label position="floating">Dirección</ion-label>
+    <ion-input [(ngModel)]="address" type="text"></ion-input>
+  </ion-item>
+  <ion-button expand="block" fill="outline" color="success" (click)="add()">
     <ion-icon name="md-add-circle" slot="end"></ion-icon>
+    Crear Locación
   </ion-button>
 </ion-content>
 <ion-footer color="dark">

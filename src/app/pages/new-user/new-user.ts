@@ -62,7 +62,7 @@ export class NewUserPage {
           this.showErrorModel('Numero de Identificacion es requerido!');
           resolve(false);
           return;
-        } else if (val) {
+        } else if (!val) {
           this.showErrorModel('Correo no válido, el correo debe tener un formato parecido a este: "correo@dominio.com"!');
           resolve(false);
           return;
@@ -76,7 +76,7 @@ export class NewUserPage {
     });
   }
 
-  goBack() {
+  closeModal() {
     this.modal.dismiss();
   }
 

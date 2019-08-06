@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ReviewOrderPage } from './review-order';
+import { LocationCrudPage } from './location-crud';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    ReviewOrderPage,
+    LocationCrudPage,
   ],
   imports: [
     CommonModule,
@@ -16,9 +16,9 @@ import { RouterModule } from '@angular/router';
     RouterModule.forChild([
       {
         path: '',
-        component: ReviewOrderPage
+        component: LocationCrudPage
       }
     ])
   ]
 })
-export class ReviewOrderPageModule {}
+export class LocationCrudPageModule {}

@@ -1,0 +1,72 @@
+<ion-header color="danger">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button text="atrás"></ion-back-button>
+        </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Nuevo Cliente
+      </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding color="dark" text-wrap>
+  <div class="img">
+    <img [src]="logo" /><br>
+    <ion-button icon-left expand="block" fill="outline" color="secondary" (click)="takePhoto()">
+      <ion-icon name="camera"></ion-icon>
+      Capturar Logo
+    </ion-button>
+  </div>
+  <ion-item>
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input [(ngModel)]="cust.name" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Marca</ion-label>
+    <ion-input [(ngModel)]="cust.brand" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Tipo Identificación</ion-label>
+    <ion-select [(ngModel)]="cust.identType" multiple="false">
+      <ion-select-option value="Cedula">Cédula</ion-select-option>
+      <ion-select-option value="NIT">NIT</ion-select-option>
+      <ion-select-option value="Pasaporte">Pasaporte</ion-select-option>
+      <ion-select-option value="Otro">Otro</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating"># Identificacion</ion-label>
+    <ion-input [(ngModel)]="cust.ident" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Nombre Contacto</ion-label>
+    <ion-input [(ngModel)]="cust.contact" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Correo</ion-label>
+    <ion-input [(ngModel)]="cust.email" type="email"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Teléfonos</ion-label>
+    <ion-input [(ngModel)]="cust.phone" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Dirección</ion-label>
+    <ion-input [(ngModel)]="cust.address" type="text"></ion-input>
+  </ion-item>
+  <ion-button expand="block" fill="outline" color="success" (click)="add()">
+    <ion-icon name="md-add-circle" slot="end"></ion-icon>
+    Crear Cliente
+  </ion-button>
+</ion-content>
+<ion-footer color="dark">
+  <ion-button expand="block" color="danger" (click)="closeModal()">Cerrar</ion-button>
+  <ion-toolbar text-center>
+    <span style="font-size: .8rem; margin-right: 10px;">
+      Fast Fire - Redes contra incendios. &#169; {{us.getCurrentYear()}}
+    </span>
+  </ion-toolbar>
+</ion-footer>

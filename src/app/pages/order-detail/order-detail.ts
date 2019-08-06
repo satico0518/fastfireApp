@@ -19,7 +19,7 @@ export class OrderDetailPage {
     public modalCtrl: ModalController,
     public alertCtrl: AlertController,
     private admnSrvc: AdminService,
-    public util: UtilsService
+    public us: UtilsService
   ) {
     this.actRoute.queryParams.subscribe(() => {
       if (this.router.getCurrentNavigation().extras.state) {
@@ -58,7 +58,7 @@ export class OrderDetailPage {
   }
 
   goToViewer(img) {
-    this.util.goToViewer(img);
+    this.us.goToViewer(img);
   }
 
   checkOrder() {
@@ -73,13 +73,13 @@ export class OrderDetailPage {
             {
               text: 'Chequear',
               handler: () => {
-                this.util.presentLoading('Chequeando inspección...').then(loader => {
+                this.us.presentLoading('Chequeando inspección...').then(loader => {
                 this.admnSrvc
                   .checkInspection(this.order.creationDate)
                   .then(resp => {
                     if (resp) {
                       loader.dismiss();
-                      this.util
+                      this.us
                         .presentToast('Inspección Chequeada exitosamente!', 'success')
                         .then(toast => {
                           toast.present();

@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button text="atrás"></ion-back-button>
+        </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Planos
+      </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding color="dark" text-wrap>
+  <ion-button expand="block" fill="outline" color="success" (click)="newObj()">
+    <ion-icon name="md-add-circle" slot="end"></ion-icon>
+    Nuevo Plano
+  </ion-button><br>
+  <ion-item>
+    <ion-label>
+      {{cust?.name}}
+      <p style="font-size: .8rem; color: rgb(117, 117, 117)">Locación: {{loc?.name}}</p>
+    </ion-label>
+  </ion-item>
+  <ion-list>  
+    <ion-item-sliding *ngFor="let pln of planes">
+      <ion-item>
+        <img *ngIf="pln.url && pln.url.includes('firebasestorage')" src="../../../assets/imgs/planos.png" />
+        <img *ngIf="pln.url && pln.url.includes('data:image')" [src]="pln.url" />
+      </ion-item>
+      <ion-item>        
+        <ion-label style="width: 100%">
+          <span>{{pln?.name}}</span>
+          <span  style="font-size: .8rem; color: rgb(117, 117, 117)">
+            <a *ngIf="pln.url && pln.url.includes('firebasestorage')" href="{{pln.url}}" target="_blank">
+            <img class="img-download" src="../../../assets/imgs/pdf-icon.png">
+            </a>
+            <p>
+              Fecha de subida: {{pln?.uploadDate.toDate() | date:'dd MMM yyyy HH:mm'}}
+              <br>Subido por: {{pln?.uploadUser}}
+              <br>
+              <ion-badge style="float: right" color="{{pln?.state ? 'secondary' : 'danger'}}">{{pln?.state ? 'Activo' : 'Inactivo'}}</ion-badge>
+            </p>
+          </span>      
+        </ion-label>        
+      </ion-item>      
+      <ion-item-options slot="end">
+        <ion-item-option color="danger" (click)="remove(pln)">
+          <ion-icon name="trash"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="secondary" (click)="edit(pln)">
+          <ion-icon name="md-create"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
+<ion-footer color="dark">
+  <ion-toolbar text-center>
+    <span style="font-size: .8rem; margin-right: 10px;">
+      Fast Fire - Redes contra incendios. &#169; {{us.getCurrentYear()}}
+    </span>
+  </ion-toolbar>
+</ion-footer>

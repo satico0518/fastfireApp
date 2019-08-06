@@ -43,7 +43,7 @@ export class NewMaterialPage {
     }
   }
 
-  goBack() {
+  closeModal() {
     this.modalCtrl.dismiss();
   }
 

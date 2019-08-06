@@ -1,4 +1,4 @@
-<ion-header color="danger">
+<ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
         <ion-back-button text="atrás"></ion-back-button>
@@ -7,32 +7,34 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-        Editar Material
+      Editar Locación
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding color="dark" text-wrap>
-  <img [src]="img" width="100%"/><br><br>
   <ion-item>
     <ion-label position="floating">Nombre</ion-label>
-    <ion-input [(ngModel)]="name" type="text"></ion-input>
+    <ion-input [(ngModel)]="location.name" type="text"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Precio</ion-label>
-    <ion-input [(ngModel)]="price" type="number"></ion-input>
-  </ion-item><br>
-  <ion-button expand="block" fill="outline" color="secondary" (click)="takePhoto()">
-    Cambiar Foto
-    <ion-icon name="camera" slot="end"></ion-icon>
-  </ion-button>
-  <ion-button  expand="block" fill="outline" color="success" (click)="edit()">
-    Guardar
+    <ion-label position="floating">Dirección</ion-label>
+    <ion-input [(ngModel)]="location.address" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Estado</ion-label>
+    <ion-select [(ngModel)]="location.state" multiple="false">
+      <ion-select-option [value]="true">Activar</ion-select-option>
+      <ion-select-option [value]="false">Inactivar</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-button expand="block" fill="outline" color="success" (click)="edit()">
     <ion-icon name="md-add-circle" slot="end"></ion-icon>
+    Guardar Locación
   </ion-button>
 </ion-content>
 <ion-footer color="dark">
-  <ion-button expand="block" color="danger" (click)="closeModal()">Cerrar</ion-button>
+<ion-button expand="block" color="danger" (click)="closeModal()">Cerrar</ion-button>
   <ion-toolbar text-center>
     <span style="font-size: .8rem; margin-right: 10px;">
       Fast Fire - Redes contra incendios. &#169; {{us.getCurrentYear()}}

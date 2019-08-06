@@ -1,34 +1,30 @@
-<ion-header color="danger">
+<ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-        <ion-back-button text="atrás"></ion-back-button>
+      <ion-buttons slot="start">
+          <ion-back-button text="atrás"></ion-back-button>
+        </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
       </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-        Editar Material
-    </ion-title>
-  </ion-toolbar>
+      <ion-title>
+        Nuevo Plano
+      </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content padding color="dark" text-wrap>
-  <img [src]="img" width="100%"/><br><br>
+  <img [src]="img" />
   <ion-item>
     <ion-label position="floating">Nombre</ion-label>
     <ion-input [(ngModel)]="name" type="text"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Precio</ion-label>
-    <ion-input [(ngModel)]="price" type="number"></ion-input>
   </ion-item><br>
   <ion-button expand="block" fill="outline" color="secondary" (click)="takePhoto()">
-    Cambiar Foto
     <ion-icon name="camera" slot="end"></ion-icon>
+    Tomar Foto Plano
   </ion-button>
-  <ion-button  expand="block" fill="outline" color="success" (click)="edit()">
-    Guardar
-    <ion-icon name="md-add-circle" slot="end"></ion-icon>
+  <ion-button expand="block" fill="outline" color="secondary" (click)="chooseFile()">
+    <ion-icon name="folder" slot="end"></ion-icon>
+    Cargar Archivo PDF
   </ion-button>
 </ion-content>
 <ion-footer color="dark">

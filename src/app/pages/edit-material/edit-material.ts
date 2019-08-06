@@ -44,7 +44,7 @@ export class EditMaterialPage {
     });
   }
 
-  goBack() {
+  closeModal() {
     this.modal.dismiss();
   }
 

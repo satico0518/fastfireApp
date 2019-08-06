@@ -31,9 +31,6 @@ export class DatabasePage {
     public us: UtilsService) {
   }
 
-  ionViewDidLoad() {
-  }
-
   goToItemPage(page) {
     switch (page) {
       case SettingsPagesEnum.MaterialCRUD:

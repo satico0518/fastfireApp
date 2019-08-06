@@ -306,8 +306,12 @@ export class AdminService {
   // endregion
 
   //#region Customer
-  getCustomers(): Observable<any[]> {
-    return this.afs.collection('customers').valueChanges();
+  getCustomers(): Promise<any[]> {
+    return new Promise((resolve, reject) => {
+      this.afs.collection('customers').valueChanges().subscribe(resp => {
+        resolve(resp);
+      }, err => reject(err));
+    });
   }
   newCustomer(cust: CustomerModel): Promise<boolean> {
     return new Promise((resolve, reject) => {
@@ -398,17 +402,21 @@ export class AdminService {
   // endregion
 
   // #region Locations
-  getLocations(cust): any {
-    return this.afs.collection('customers', ref => ref.where('ident', '==', cust.ident))
-      .get()
-      .subscribe(snap => {
-        this.currentCustID = snap.docs[0].id;
-        return this.afs
-          .collection('customers')
-          .doc(snap.docs[0].id)
-          .collection('locations')
-          .valueChanges();
-      });
+  getLocations(cust): Promise<any[]> {
+    return new Promise((resolve, reject) => {
+      this.afs.collection('customers', ref => ref.where('ident', '==', cust.ident))
+        .get()
+        .subscribe(snap => {
+          this.currentCustID = snap.docs[0].id;
+          return this.afs
+            .collection('customers')
+            .doc(snap.docs[0].id)
+            .collection('locations')
+            .valueChanges().subscribe(val => {
+              resolve(val);
+            }, err => reject(err));
+        });
+    });
   }
 
   getLocationByKey(locKey: string): Promise<any> {
@@ -455,24 +463,30 @@ export class AdminService {
       }
     });
   }
-  editLocation(loc: LocationModel): Promise<boolean> {
+  editLocation(loc: LocationModel, initialName: string): Promise<boolean> {
     return new Promise((resolve, reject) => {
       try {
         loc.state = JSON.parse(loc.state.toString());
         this.afs
           .collection('customers')
           .doc(this.currentCustID)
-          .collection('locations')
-          .doc(loc.key)
-          .update(loc)
-          .then(resp => {
-            resolve(true);
-          })
-          .catch(err => {
-            this.presentToast(err.message, 'danger').then(() => resolve(false));
+          .collection('locations', ref => ref.where('name', '==', initialName)).get().subscribe(snap => {
+            this.afs
+            .collection('customers')
+            .doc(this.currentCustID)
+            .collection('locations', ref => ref.where('name', '==', initialName))
+            .doc(snap.docs[0].id)
+            .update(loc)
+            .then(resp => {
+              resolve(true);
+            })
+            .catch(err => {
+              reject(err);
+              this.presentToast(err.message, 'danger').then(() => resolve(false));
+            });
           });
       } catch (error) {
-        resolve(false);
+        reject(error);
       }
     });
   }
@@ -483,14 +497,20 @@ export class AdminService {
         this.afs
           .collection('customers')
           .doc(this.currentCustID)
-          .collection('locations')
-          .doc(loc.key)
-          .update({ state: false })
-          .then(resp => {
-            resolve(true);
-          })
-          .catch(err => {
-            this.presentToast(err.message, 'danger').then(() => resolve(false));
+          .collection('locations', ref => ref.where('name', '==', loc.name)).get().subscribe(snap => {
+            this.afs
+            .collection('customers')
+            .doc(this.currentCustID)
+            .collection('locations', ref => ref.where('name', '==', loc.name))
+            .doc(snap.docs[0].id)
+            .update({ state: false })
+            .then(resp => {
+              resolve(true);
+            })
+            .catch(err => {
+              reject(err);
+              this.presentToast(err.message, 'danger').then(() => resolve(false));
+            });
           });
       } catch (error) {
         resolve(false);

@@ -36,10 +36,6 @@ export class DailyReportPage {
     });
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SitetestPage');
-  }
-
   takePhoto() {
     const options: CameraOptions = {
       quality: 30,

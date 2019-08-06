@@ -68,8 +68,20 @@ const routes: Routes = [
     loadChildren: '../app/pages/user-crud/user-crud.module#UserCrudPageModule'
   },
   {
+    path: 'customercrudpage',
+    loadChildren: '../app/pages/customer-crud/customer-crud.module#CustomerCrudPageModule'
+  },
+  {
     path: 'materialcrudpage',
     loadChildren: '../app/pages/material-crud/material-crud.module#MaterialCrudPageModule'
+  },
+  {
+    path: 'locationcrudpage',
+    loadChildren: '../app/pages/location-crud/location-crud.module#LocationCrudPageModule'
+  },
+  {
+    path: 'planescrudpage',
+    loadChildren: '../app/pages/planes-crud/planes-crud.module#PlanesCrudPageModule'
   },
   {
     path: 'checkdailyreports',

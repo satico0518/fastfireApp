@@ -20,9 +20,13 @@ export class UtilsService {
     private downloader: Downloader,
   ) {}
 
-getCurrentYear() {
-  return new Date().getFullYear();
-}
+  get notAvailableImage(): string {
+    return 'https://static.miweb.padigital.es/var/m_4/42/420/51019/711652-imagen-no-disponible.jpg';
+  }
+
+  getCurrentYear() {
+    return new Date().getFullYear();
+  }
 
   getTitleByProcess(process: ProcessEnum): string {
     let title = '';
@@ -115,8 +119,7 @@ getCurrentYear() {
 
   validateEmail(email: string): Promise<boolean> {
     return new Promise(resolve => {
-    // tslint:disable-next-line:max-line-length
-      const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      const re = /\S+@\S+\.\S+/;
       resolve(re.test(email.toLowerCase()));
     });
   }

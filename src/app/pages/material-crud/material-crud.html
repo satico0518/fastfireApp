@@ -12,7 +12,11 @@
     </ion-toolbar>
   </ion-header>
   
-  <ion-content padding color="dark" text-wrap>      
+  <ion-content padding color="dark" text-wrap>
+    <ion-button expand="block" fill="outline" color="success" (click)="newObj()">
+      Nuevo Material
+      <ion-icon name="md-add-circle" slot="end"></ion-icon>
+    </ion-button><br>
     <ion-list>
       <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
       <ion-item-sliding *ngFor="let mat of materials">
@@ -34,11 +38,7 @@
           </ion-item-options>
         </ion-item-sliding>          
     </ion-list>
-    <ion-button expand="block" fill="outline" color="success" (click)="newObj()">
-      Nuevo Material
-      <ion-icon name="md-add-circle" slot="end"></ion-icon>
-    </ion-button>
-  </ion-content>
+  </ion-content>  
   <ion-footer color="dark">
     <ion-toolbar text-center>
       <span style="font-size: .8rem; margin-right: 10px;">

@@ -1,28 +1,28 @@
 <ion-header>
   <ion-toolbar>
-      <ion-buttons slot="start">
-          <ion-back-button text="atrás"></ion-back-button>
-        </ion-buttons>
-      <ion-buttons slot="end">
-        <ion-menu-button></ion-menu-button>
+    <ion-buttons slot="start">
+        <ion-back-button text="atrás"></ion-back-button>
       </ion-buttons>
-      <ion-title>
-          Nuevo Usuario
-      </ion-title>
-    </ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Editar Usuario
+    </ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding color="dark" text-wrap>
   <ion-item>
-    <ion-label position="floating">Nombre *</ion-label>
+    <ion-label position="floating">Nombre</ion-label>
     <ion-input [(ngModel)]="user.name" type="text"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Apellido *</ion-label>
+    <ion-label position="floating">Apellido</ion-label>
     <ion-input [(ngModel)]="user.lastname" type="text"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Tipo Identificación *</ion-label>
+    <ion-label position="floating">Tipo Identificación</ion-label>
     <ion-select [(ngModel)]="user.identType" multiple="false">
       <ion-select-option value="Cedula">Cédula</ion-select-option>
       <ion-select-option value="NIT">NIT</ion-select-option>
@@ -31,12 +31,12 @@
     </ion-select>
   </ion-item>
   <ion-item>
-    <ion-label position="floating"># Identificacion *</ion-label>
+    <ion-label position="floating"># Identificacion</ion-label>
     <ion-input [(ngModel)]="user.ident" type="text"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Correo *</ion-label>
-    <ion-input [(ngModel)]="user.email" type="email"></ion-input>
+    <ion-label position="floating">Correo/Usuario</ion-label>
+    <ion-input [(ngModel)]="user.email" type="email" disabled></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Teléfonos</ion-label>
@@ -47,17 +47,23 @@
     <ion-input [(ngModel)]="user.address" type="text"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Perfil *</ion-label>
+    <ion-label position="floating">Tipo Usuario</ion-label>
     <ion-select [(ngModel)]="user.profile" multiple="false">
       <ion-select-option value="oper">Operario</ion-select-option>
       <ion-select-option value="cust">Cliente</ion-select-option>
       <ion-select-option value="admin">Administrador</ion-select-option>
     </ion-select>
   </ion-item>
-  <br>
-  <ion-button expand="block" fill="outline" color="success" (click)="add()">
+  <ion-item>
+    <ion-label position="floating">Estado</ion-label>
+    <ion-select [(ngModel)]="user.state" multiple="false">
+      <ion-select-option [value]="true">Activar</ion-select-option>
+      <ion-select-option [value]="false">Inactivar</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-button expand="block" color="success" fill="outline" (click)="edit()">
     <ion-icon name="md-add-circle" slot="end"></ion-icon>
-    Crear Usuario
+    Guardar
   </ion-button>
 </ion-content>
 <ion-footer color="dark">

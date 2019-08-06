@@ -29,6 +29,15 @@ import { NewMaterialPageModule } from './pages/new-material/new-material.module'
 import { EditMaterialPageModule } from './pages/edit-material/edit-material.module';
 import { Downloader } from '@ionic-native/downloader/ngx';
 import { NewUserPageModule } from './pages/new-user/new-user.module';
+import { EditUserPageModule } from './pages/edit-user/edit-user.module';
+import { EditCustomerPageModule } from './pages/edit-customer/edit-customer.module';
+import { NewCustomerPageModule } from './pages/new-customer/new-customer.module';
+import { EditLocationPageModule } from './pages/edit-location/edit-location.module';
+import { NewLocationPageModule } from './pages/new-location/new-location.module';
+import { NewPlanePageModule } from './pages/new-plane/new-plane.module';
+import { FilePath } from '@ionic-native/file-path/ngx';
+import { FileChooser } from '@ionic-native/file-chooser/ngx';
+import { File } from '@ionic-native/file/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -41,7 +50,13 @@ import { NewUserPageModule } from './pages/new-user/new-user.module';
     ReviewOrderPageModule,
     NewMaterialPageModule,
     EditMaterialPageModule,
+    EditUserPageModule,
     NewUserPageModule,
+    EditCustomerPageModule,
+    NewCustomerPageModule,
+    EditLocationPageModule,
+    NewLocationPageModule,
+    NewPlanePageModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFireStorageModule,
@@ -61,6 +76,9 @@ import { NewUserPageModule } from './pages/new-user/new-user.module';
     PlaneService,
     ProcessService,
     Camera,
+    File,
+    FilePath,
+    FileChooser,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
