@@ -53,7 +53,7 @@ export class CheckHistoricDailyReportsPage implements OnInit {
             }).then(alert => alert.present());
           }
           loader.dismiss();
-        });
+        }, err => loader.dismiss());
       } else if (this.params.hasOwnProperty('oper')) {
         this.admSrvc.getHistoricDailyReportsByOper(this.oper.email).subscribe(list => {
           this.reports = list;
@@ -63,7 +63,7 @@ export class CheckHistoricDailyReportsPage implements OnInit {
             }).then(alert => alert.present());
           }
           loader.dismiss();
-        });
+        }, err => loader.dismiss());
       }
     });
   }

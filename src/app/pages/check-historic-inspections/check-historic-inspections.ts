@@ -11,7 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   selector: 'page-check-historic-inspections',
   templateUrl: 'check-historic-inspections.html',
 })
-export class CheckHistoricInspectionsPage implements OnInit{
+export class CheckHistoricInspectionsPage implements OnInit {
 
   inspections: any[];
   process: ProcessEnum;
